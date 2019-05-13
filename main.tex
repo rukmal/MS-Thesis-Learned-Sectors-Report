@@ -19,10 +19,18 @@
 
 \begin{document}
 
-\input{resources/title_page.tex}
+% Title page
+\afterpage{\blankpage} % Blank page without messing up page numbers
+\subfile{resources/title_page.tex}
+
 % Setting page numbering to roman
 \newpage
 \pagenumbering{roman}
+
+% Abstact
+\addcontentsline{toc}{chapter}{Abstract}
+\subfile{resources/abstract}
+\newpage
 
 % Table of Contents
 \tableofcontents
@@ -36,5 +44,8 @@
 
 \subfile{sections/sample_section}
 
+\newpage
+% Appendices
+\subfile{resources/appendix}
 
 \end{document}

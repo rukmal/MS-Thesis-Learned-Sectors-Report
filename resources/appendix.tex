@@ -1,0 +1,27 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\appendix
+\renewcommand\chaptername{Appendix}  % This is to change 'chapter' to 'appendix' in the header
+
+% \fancypagestyle{plain}{
+%     \fancyhead[RE,LO]{\chaptername \ \thechapter}
+% }
+
+\fancypagestyle{appendix}{
+    \fancyhead[RE,LO]{\chaptername \ \thechapter}
+}
+
+\pagestyle{appendix}
+
+\chapter{Some Appendix}
+
+Appendix stuff goes here.
+
+
+\chapter{Another Appendix}
+
+More appendix stuff goes here.
+
+\end{document}

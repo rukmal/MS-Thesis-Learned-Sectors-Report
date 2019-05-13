@@ -1,17 +1,16 @@
-\usepackage{amsthm}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{bm}
-\usepackage{caption}
-\usepackage{enumerate}
-\usepackage{fancyhdr}
-\usepackage[hang, bottom]{footmisc}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{longtable}
-\usepackage{parskip}
-\usepackage{relsize}
-\usepackage{tikz}
+\usepackage{afterpage} % Blank page without messing up page numbers
+\usepackage{amsthm} % Math
+\usepackage{amsmath} % Math
+\usepackage{amssymb} % Math
+\usepackage{caption} % Captions
+\usepackage{enumerate} % Special enumeration
+\usepackage{fancyhdr} % Fancy heders
+\usepackage[hang, bottom]{footmisc} % Advanced footer formatting
+\usepackage{graphicx} % Graphics
+\usepackage{hyperref} % Hyperlinks
+\usepackage{longtable} % Long tables
+\usepackage{parskip} % Custom skips
+\usepackage{relsize} % Relative sizing
 
 \setcounter{secnumdepth}{0}
 \allowdisplaybreaks[1]
@@ -28,9 +27,9 @@
 \fancyfoot{}
 % Header
 \renewcommand{\headrulewidth}{0.4pt}
-\fancyhead[LE,RO]{Weerawarana, Zhu, He}
+\fancyhead[LE,RO]{\nouppercase{\leftmark}}
 \fancyhead[C]{Learned Sectors}
-\fancyhead[RE,LO]{\nouppercase{\leftmark}}
+\fancyhead[RE,LO]{Weerawarana, Zhu, He}
 
 % Footer
 \renewcommand{\footrulewidth}{0.4pt}
@@ -45,9 +44,9 @@
 	\fancyfoot{}
 	% Header
 	\renewcommand{\headrulewidth}{0.4pt}
-	\fancyhead[LE,RO]{Weerawarana, Zhu, He}
-	\fancyhead[C]{Learned Sectors}
-	\fancyhead[RE,LO]{\nouppercase{\leftmark}}
+    \fancyhead[LE,RO]{\nouppercase{\leftmark}}
+    \fancyhead[C]{Learned Sectors}
+    \fancyhead[RE,LO]{Weerawarana, Zhu, He}
 
 	% Footer
 	\renewcommand{\footrulewidth}{0.4pt}
@@ -57,7 +56,14 @@
 }
 
 
-
+% Blank page without messing up page numbers
+% See: https://tex.stackexchange.com/questions/36880/insert-a-blank-page-after-current-page
+\newcommand{\blankpage}{
+    \null
+    \thispagestyle{empty}
+    \addtocounter{page}{-1}
+    \newpage
+}
 
 
 % This is a workaround for a showstopping bug in longtable.
