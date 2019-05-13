@@ -13,18 +13,27 @@
 \usepackage{subfiles}
 
 % Page margin settings
-\usepackage[margin=0.5in]{geometry}
+\usepackage[left=0.5in, right=0.5in, top=0.75in, bottom=0.75in]{geometry}
 
-\title{Learned Sectors [FE 800 Final Project]}
-\author{Rukmal Weerawarana}
-\date{May 2019}
+\input{resources/header.tex}
 
 \begin{document}
 
-\maketitle
+\input{resources/title_page.tex}
+% Setting page numbering to roman
+\newpage
+\pagenumbering{roman}
+
+% Table of Contents
+\tableofcontents
+\newpage
+
+% Setting page numbering to arabic
+\pagenumbering{arabic}
 
 % This is where files are included, in order as necessary
 % Sample include with the subfiles package:
+
 \subfile{sections/sample_section}
 
 
