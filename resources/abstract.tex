@@ -32,22 +32,56 @@ Following this rubric, I think we should split our project into the following se
 
 \begin{enumerate}
     \item Abstract (DO THIS LAST)
+
     \item Introduction
-    \item Research Statement
-    \item Literature Review
-    \item Clustering Algorithm
     \begin{itemize}
-        \item Input data description; rationale for "why" we picked this
-        \item HCA description (variables, cutting, etc.)
-        \item Linkage method discussion
-        \begin{itemize}
-            \item Discuss each linkage method
-        \end{itemize}
-        \item Discussion of candidate sectors; why we need validation model to "rank" sector universes
+        \item What are sectors? High level introduction
+        \item Why should I care? Explain this with applications (Credit Risk Modeling, ETFs, Peer Valuation, etc.)
+        \item What is the status quo? Review of current methodology; GICS + FTSE in particular
+        \item Why is it broken? Discuss the "company choice" criteria of the current sectorization schemes; explain why this is stupid (potentially cite others that also have the same criteria)
     \end{itemize}
-    \item Validation Methodology
+    
+    \item Research Goals
     \begin{itemize}
-        \item Use candidate universe to explain "universe by universe" comparison
+        \item Segue into this from previous section by saying something like "To this end, we developed the research goal..."
+        \item List main thesis (green box from presentation)
+        \item List specific research goals (from presentation); have small section/paragraph describing each
+        \item \textbf{IMPORTANT} number all of these like RQ1, RQ2, etc. to refer back to them later
+        \item End by saying we will explore each of the research goals in detail in the following sections of the report
+    \end{itemize}
+
+    \item Literature Review
+    \begin{itemize}
+        \item Need to do this
+    \end{itemize}
+    
+    \item Feature Selection
+    \begin{itemize}
+        \item Talk about WRDS here
+        \item Talk about the fields we're using; come up with a way to justify why (basically need to communicate that accounting reports are indicative of underlying business structure; maybe refer to capital budgeting)
+        \item Benchmark Data (need to mention limitation that we only have cross-sectional data for SPY sectors)
+    \end{itemize}
+    
+    \item Unsupervised Learning Method Survey
+    \begin{itemize}
+        \item Discuss potential unsupervised learning methods; discuss K-Means, SVM, etc.
+        \item Discuss benefits of HCA, especially flexibility in creating different numbers of sectors easily (this should be motivated by the introduction, where you talk about how the existing number of sectors is completely arbitrary)
+    \end{itemize}
+    
+    \item Hierarchical Clustering Model
+
+    \begin{itemize}
+        \item HCA description (high level)
+        \item Distance measure (might be part of previous section; we're using default euclidian distance)
+        \item Linkage method discussion (need to mention that we can't pick the "best" one outright without introducing bias)
+        \item Number of sectors - why we didn't pick a single number (same reason as testing all linkage methods)
+        \item Candidate sector universe visualization
+        \item talk about ranking these sectors (this might be in the next section intro instead)
+    \end{itemize}
+
+    \item Candidate Universe Ranking
+    \begin{itemize}
+        \item Use example candidate universe to explain "universe by universe" comparison
         \item reIndexer
         \begin{itemize}
             \item Overview
@@ -55,12 +89,41 @@ Following this rubric, I think we should split our project into the following se
             \item synthetic ETF construction
             \item minimum variance portfolio computation
         \end{itemize}
-        \item Target performance metrics (portfolio/etf construction costs, sharpe, etc.)
-        \item Backtest configuration
+        \item Target performance metrics (need to describe \textit{why} we choose each of these in depth) (need to talk about rolling window for this computation, etc.)
+        \begin{itemize}
+            \item Restructuring Turnover (metric for measuring cost for institution constructing the ETFs)
+            \item Rebalancing Turnover (metric for measuring cost for retail investor holding the ETFs)
+            \item Sharpe Ratio (relate this back to the expected economic diversification benefit from naturally divergent businesses)
+            \item Portfolio Return
+        \end{itemize}
+        \item Backtest configuration (start date, stop date, etc.)
     \end{itemize}
-    \item Ranking results (discuss individual best-ones here too; refer back to validation methodology)
-    \item Conclusion
+    
+    \item Optimal Sector Universes
+    \begin{itemize}
+        \item Visualize backtest results (crazy graphs; probably in appendix)
+        \item List optimal universes under each performance metric (min restructuring + rebalancing cost, max portfolio return, max sharpe ratio)
+        \item Sharpe Ratio optimal sector description and analysis
+    \end{itemize}
+    
+    \item Benchmark Comparison
+    \begin{itemize}
+        \item Compare each of the performance metrics
+        \item Write analysis for this basically
+    \end{itemize}
+    
+    
+    \item Conclusion (Restate thesis, research goals, show that we addressed all of them)
+
     \item Future Work (deep-ish dive into 2/3 possible avenues)
+    \begin{itemize}
+        \item Tune hierarchical clustering to control for lopsided disrtibution of assets in the clusters
+        \item Explore different synthetic ETF construction heuristics (specifically, market cap weighted)
+        \item Dynamically adjusting sector assignments in the backtest (currently using a single cross-sectional sector assignment) (NOTE: maybe mention we did this earlier; didn't consider it because we didn't have the data for the benchmark)
+        \item Rank existing sector classification schemes
+        \item Other future work (maybe; basically a laundry list of "nice-to-have", not really well thought out suggestions)
+    \end{itemize}
+    
 \end{enumerate}
 
 \end{document}
