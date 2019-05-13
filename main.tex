@@ -1,5 +1,19 @@
-\documentclass{article}
+\documentclass[twoside]{report}
 \usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+% NOTE: Lot of setup for multi-file LaTeX project here. Most setup code here comes directly
+%       from the Overleaf guide: https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects
+
+% General packages and setup
+\usepackage{graphicx}
+\graphicspath{{images/}{../images/}}
+
+% Subfiles package for individual file compilation
+\usepackage{subfiles}
+
+% Page margin settings
+\usepackage[margin=0.5in]{geometry}
 
 \title{Learned Sectors [FE 800 Final Project]}
 \author{Rukmal Weerawarana}
@@ -9,6 +23,9 @@
 
 \maketitle
 
-\section{Introduction}
+% This is where files are included, in order as necessary
+% Sample include with the subfiles package:
+\subfile{sections/sample_section}
+
 
 \end{document}
