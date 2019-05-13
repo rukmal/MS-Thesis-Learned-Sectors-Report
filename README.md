@@ -4,6 +4,12 @@ Final project report for FE 800 (Special Research Problems) to fulfill graduatio
 
 Completed in May 2019.
 
+## Viewing the Project
+
+This report was developed on Overleaf. A read-only view is available at the following URL:
+
+https://www.overleaf.com/read/dtwmbwfgxtcq
+
 ## Contact
 
 [Rukmal Weerawarana](http://rukmal.me)
