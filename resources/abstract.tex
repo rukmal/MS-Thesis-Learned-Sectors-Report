@@ -7,4 +7,60 @@
 
 Abstract goes here.
 
+This is temporary, but look back to this as a reference while writing the report. In the first class lecture, the instructures laid out the grading scheme and a rough grading rubric for the report:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Section} & \textbf{Points} \\
+        \hline
+        Abstract & 5 \\
+        Introduction & 10 \\
+        Literature Review & 5 \\
+        Methodology & 15 \\
+        Results & 15 \\
+        Conclusion & 5 \\
+        Bibliography & 5 \\
+        \hline
+    \end{tabular}
+    \caption{Grading rubric.}
+    \label{tab:abstract:grading_rubric}
+\end{table}
+
+Following this rubric, I think we should split our project into the following sections
+
+\begin{enumerate}
+    \item Abstract (DO THIS LAST)
+    \item Introduction
+    \item Research Statement
+    \item Literature Review
+    \item Clustering Algorithm
+    \begin{itemize}
+        \item Input data description; rationale for "why" we picked this
+        \item HCA description (variables, cutting, etc.)
+        \item Linkage method discussion
+        \begin{itemize}
+            \item Discuss each linkage method
+        \end{itemize}
+        \item Discussion of candidate sectors; why we need validation model to "rank" sector universes
+    \end{itemize}
+    \item Validation Methodology
+    \begin{itemize}
+        \item Use candidate universe to explain "universe by universe" comparison
+        \item reIndexer
+        \begin{itemize}
+            \item Overview
+            \item Software architecture
+            \item synthetic ETF construction
+            \item minimum variance portfolio computation
+        \end{itemize}
+        \item Target performance metrics (portfolio/etf construction costs, sharpe, etc.)
+        \item Backtest configuration
+    \end{itemize}
+    \item Ranking results (discuss individual best-ones here too; refer back to validation methodology)
+    \item Conclusion
+    \item Future Work (deep-ish dive into 2/3 possible avenues)
+\end{enumerate}
+
 \end{document}

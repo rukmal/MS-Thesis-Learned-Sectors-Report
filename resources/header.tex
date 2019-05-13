@@ -2,7 +2,9 @@
 \usepackage{amsthm} % Math
 \usepackage{amsmath} % Math
 \usepackage{amssymb} % Math
+\usepackage[authordate, maxcitenames=1]{biblatex-chicago} % chicago bibliography style
 \usepackage{caption} % Captions
+\usepackage{csquotes} % For chicago bibliography style
 \usepackage{enumerate} % Special enumeration
 \usepackage{fancyhdr} % Fancy heders
 \usepackage[hang, bottom]{footmisc} % Advanced footer formatting
@@ -15,8 +17,41 @@
 \setcounter{secnumdepth}{0}
 \allowdisplaybreaks[1]
 \setlength{\footnotemargin}{1em}
-\captionsetup{labelformat = empty}
+% \captionsetup{labelformat = empty}
 \footskip 35pt
+
+% Bibliography Setup
+%===================
+% Bibliography resource configuration
+\addbibresource{references.bib}
+
+% Hyperlink Setup
+%================
+% See: https://tex.stackexchange.com/questions/50747/options-for-appearance-of-links-in-hyperref
+% NOTE: This is coloring all links (cross-refs and everything, not just links); needs fix
+% \hypersetup{
+%     colorlinks = true,
+%     urlcolor = blue
+% }
+
+% Remapping bibliography underscores (_) and tildes (~) because Mendeley has weird exporting
+% Solution from: https://tex.stackexchange.com/questions/309980/parsing-underscores-in-urls-from-mendeley
+
+\DeclareSourcemap{ % Used when .bib/Bibliography is compiled, not when document is
+    \maps{
+        \map{ % Replaces '{\_}', '{_}' or '\_' with just '_'
+            \step[fieldsource=url,
+                  match=\regexp{\{\\\_\}|\{\_\}|\\\_},
+                  replace=\regexp{\_}]
+        }
+        \map{ % Replaces '{'$\sim$'}', '$\sim$' or '{~}' with just '~'
+            \step[fieldsource=url,
+                  match=\regexp{\{\$\\sim\$\}|\{\~\}|\$\\sim\$},
+                  replace=\regexp{\~}]
+        }
+    }
+}
+
 
 % Header and footer
 %=====================
@@ -57,6 +92,8 @@
 
 
 % Blank page without messing up page numbers
+%===========================================
+
 % See: https://tex.stackexchange.com/questions/36880/insert-a-blank-page-after-current-page
 \newcommand{\blankpage}{
     \null
