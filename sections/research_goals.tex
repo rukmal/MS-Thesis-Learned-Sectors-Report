@@ -1,0 +1,64 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{Research Goals}
+    
+In this section, we outline our overarching thesis statement. Additionally, we also isolate specific research goals based on this thesis statement, which we will address in sequence throughout the report. Through tackling each of the stated research goals, we hope to address the full scope of our thesis statement.
+
+\section{Thesis Statement} \label{research_goals:thesis_statement}
+
+% See: https://www.slideshare.net/linjaaho/how-to-make-boxed-text-with-latex
+% See: ftp://ftp.dante.de/tex-archive/graphics/bclogo/doc/bclogo-doc.pdf [Its in French lmfao]
+\begin{center}
+    \begin{minipage}{0.7\textwidth}
+        \begin{bclogo}[couleur=blue!30, arrondi=0.1, logo=\bcloupe, ombre=false]{\;Thesis Statement}
+            Utilize relationships in the idiosyncratic characteristics of corporations to inform a fundamentals-driven, non-subjective sector classification framework.
+        \end{bclogo}
+    \end{minipage}
+\end{center}
+
+\vspace{1em}
+
+The thesis statement above encapsulates - at a very high level - the key issues encountered in existing sector classification heuristics, and how we plan to address these limitations. We believe that - given the objectivity of our classifcation - our \textit{Learned Sectors} will provide a better basis for natural economic diversification. This is due to the fact that the underlying division of sectors, and assignment of corporations into those sectors will be objectively and quantitatively driven, rather than subjectively and qualitatively driven as is the status quo.
+
+To combat the primary issue of the previously discussed classification heuristics (their lack of objectivity, particularly for newly classified companies), we decided to restrict our input data to the classification algorithm to comprise only fundamentals data. That is, data solely from financial reports and accounting statements. We believe that this restriction sufficiently limits the scope of our investigation, while also providing us with a quantifiable objective measure of a candidate corproation's capital structure, which - we believe - will reflect its underlying economic function.
+
+Given the constraint on our input data, with the end goal of increasing objectivity, and reducing subjective involvement in the classification of the corporations, we also postulate that we will use data driven algorithms to derive potential classifications. That is, we plan to use entirely Unsupervised Learning methods, which do not require the definition of a \textit{cost function}. This lack of a cost function - in addition to reducing complexity of the project - also removes another aspect of potential bias in the classification of the companies.
+
+However, a shortcoming of this approach is that we will have a clustering algorithm parameterized by some set of arbitrary parameters, which will map a set of potential corporations to a set of potential market sectors. In keeping with the spirit of objectivity, we cannot arbitrarily assign values to the parameters, and thus must derive a method for \textit{ranking} our potential sector universes. Note that this ranking cannot be on an objective scale, but rather would be a relative ranking comparing each candidate universe to its peers, thus maintaining objectivity of the ranking.
+
+Finally, we hope to evaluate our sector classification against a benchmark sector universe; the \textit{GICS S\&P 500 Sector Classification} (hereafter \textit{the benchmark}). To do this, we will use the same metric(s) utilized in ranking the candidate sector universes, and maintain any specific methodology used to compute those rankings between the \textit{best} Learned Sector Universe, and the benchmark. If our initial hypothesis is correct, the superior risk diversification benefit inherent to our fundamentals-driven sector divisions will lead our Learned Sector Unvierse to ourperform the benchmark with respect to the evaluation metric.
+
+\section{Specific Research Goals}
+
+Here, we encapsulate the gist of the previous discussion of our thesis statement in a collection of specific research goals. We will then address each of these research goals in sequence through the rest of the report, thereby fully exploring the scope of our thesis statement in the process.
+
+\vspace{2em}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{| c | c |}
+        \hline
+        & \\
+        \textbf{Number} & \textbf{Description} \\
+        & \\
+        \hline
+        & \\
+        RG-1 & Utilize data-driven algorithms to derive a truly objective classification heuristic. \\
+        & \\
+        \hline
+        & \\
+        RG-2 & Rank candidate sector universes against each other using entirely objective criteria. \\
+        & \\
+        \hline
+        & \\
+        RG-3 & Evaluate our risk-adjusted return optimal sector universe against the benchmark. \\
+        & \\
+        \hline
+    \end{tabular}
+    \caption{Specific, itemized research goals of the Learned Sectors project.}
+    \label{table:research_goals:research_goals}
+\end{table}
+
+\end{document}
