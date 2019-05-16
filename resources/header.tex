@@ -7,19 +7,24 @@
 \usepackage{csquotes} % For chicago bibliography style
 \usepackage{enumerate} % Special enumeration
 \usepackage{fancyhdr} % Fancy heders
+\usepackage{float} % Figure position
 \usepackage[hang, bottom]{footmisc} % Advanced footer formatting
 \usepackage[toc]{glossaries} % Glossary
 \usepackage{graphicx} % Graphics
 \usepackage{longtable} % Long tables
 \usepackage{parskip} % Custom skips
 \usepackage{relsize} % Relative sizing
-\usepackage{float} % Figure position
+\usepackage{wrapfig} % Text wrapping around figures
 
-\setcounter{secnumdepth}{0}
 \allowdisplaybreaks[1]
 \setlength{\footnotemargin}{1em}
 % \captionsetup{labelformat = empty}
 \footskip 35pt
+
+% Section Numbering Setup
+%========================
+% Numbering depth
+\setcounter{secnumdepth}{1}
 
 % Bibliography Setup
 %===================
@@ -27,6 +32,14 @@
 \addbibresource{references.bib}
 % Citation formatting (in footnote)
 \newcommand{\citeFormat}[1]{\footnote{#1}}
+% "ibid" formatting with the custom 'authordate' stuff
+% See: https://tex.stackexchange.com/questions/333514/printing-ibid-for-biblatex-chicago-authordate-style
+\renewbibmacro*{cite:ibid}{\printtext[bibhyperref]{\bibstring[\mkibid]{ibidem}}}
+
+% Figure Wrapping
+%================
+% See: https://tex.stackexchange.com/questions/27695/strange-space-left-above-wrapfig-figures
+\newcommand{\wrapfigadjustment}{-1.5em}
 
 % Hyperlink Setup
 %================
@@ -72,7 +85,7 @@
 % Footer
 \renewcommand{\footrulewidth}{0.4pt}
 \fancyfoot[RE,LO]{SIT}
-\fancyfoot[C]{FE 800}
+\fancyfoot[C]{FE 800 - Special Research Problems}
 \fancyfoot[LE,RO]{\thepage}
 
 
@@ -89,7 +102,7 @@
 	% Footer
 	\renewcommand{\footrulewidth}{0.4pt}
 	\fancyfoot[RE,LO]{SIT}
-	\fancyfoot[C]{FE 800}
+	\fancyfoot[C]{FE 800 - Special Research Problems}
 	\fancyfoot[LE,RO]{\thepage}
 }
 
