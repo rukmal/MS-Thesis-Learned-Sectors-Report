@@ -15,7 +15,11 @@
 % Page margin settings
 \usepackage[left=0.5in, right=0.5in, top=0.75in, bottom=0.75in]{geometry}
 
+% Headers
 \input{resources/header.tex}
+
+% Glossary
+\input{resources/glossary.tex}
 
 \begin{document}
 
@@ -62,5 +66,9 @@
 \newpage
 \addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography
+
+% Glossary
+\glsaddall
+\printglossary[style=altlist, nonumberlist]
 
 \end{document}
