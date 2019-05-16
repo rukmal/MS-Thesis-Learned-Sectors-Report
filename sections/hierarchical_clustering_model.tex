@@ -48,11 +48,13 @@ Another important variable is the number of new sectors. How many new sectors sh
 
 After we select the linkage method and the number of new sectors, we use Python scikit-learn package to run hierarchical clustering to get one group of results. To see our results clearly, we use sankey diagram to visualize them. As mentioned above, we have 4 linkage methods and 15 numbers of groups. So we have 60 groups of results in total. Below is the visualization of part of them.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.25]{images/all_combine.png}
-    \caption{hierarchical_clustering_model:all_combine}
-    \label{fig:fig:hierarchical_clustering_model:all_combine}
+    \fbox{
+    \includegraphics[width=.95\linewidth]{images/search_space_partial.png}
+    }
+    \caption{Learned sectors partial search space visualization.}
+    \label{fig:hierarchical_clustering_model:partial_search_space}
 \end{figure}
 
 The question is which group is the best? And more importantly, is it better than the traditional sectors? From next chapter, we are going to answer these questions.
