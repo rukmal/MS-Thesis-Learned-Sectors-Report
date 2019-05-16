@@ -25,7 +25,7 @@ Following the successful derivation of an objective sector classification heuris
     \centering
     \vspace{\wrapfigadjustment}
     \fbox{
-    \includegraphics[width=0.48\textwidth]{images/sample_ls_universe.png}
+    \includegraphics[width=\linewidth]{images/sample_ls_universe.png}
     }
     \caption{Sample learned sector universe - Ward Linkage; 2010 Data; 10 Sectors.}
     \label{fig:candidate_universe_ranking:sample_ls_universe}
@@ -51,7 +51,7 @@ To combat this issue, we decided to evaluate the sector universes as a whole, an
     \centering
     \vspace{\wrapfigadjustment}
     \fbox{
-    \includegraphics[width=0.38\textwidth]{images/reIndexer_logo.png}
+    \includegraphics[width=\linewidth]{images/reIndexer_logo.png}
     }
     \caption{The \textit{reIndexer} research tool.}
     \label{fig:candidate_universe_ranking:reindexer_logo}
@@ -72,7 +72,7 @@ To this end, reIndexer currently implements a price-weighted synthetic ETF. The 
 The mathematical formulation of the price-weighted SETF is outlined below:
 
 \begin{gather*}
-    \text{Let $\boldsymbol{S}_\alpha$} = \text{Sample sector $\alpha$} \\
+    \text{Let $\boldsymbol{S}_\alpha$} = \text{Assets in sample sector $\alpha$} \\
     \text{Let $\boldsymbol{P}_\alpha$} = \text{Prices of assets in $\boldsymbol{S}_\alpha$} \\
     \text{Let $\boldsymbol{w}_\alpha$} = \text{Weights of assets in $\boldsymbol{S}_\alpha$} \\
     \\
@@ -102,7 +102,9 @@ Following the construction of the SETFs, reIndexer builds an efficient portfolio
 
 However, in a similar fashion to the price-weighted SETF, the pythonic implementation of this portfolio is highly generalized in the reIndexer source code, and can be easily reconfigurable to work with myriad different portfolio configuraitons. reIndexer provides functionality to retreive a Matrix of historical SETF prices for a given lookback window, with SETF prices being correctly computed using the formulation described above.
 
-Following this, reIndexer computes the correlation matrix of returns using the historical prices over a specific lookback period, and then performs the non-convex optimization necessary to compute SETF weights in the Global Minimum Variance Portfolio. The mathematical formulation for this process is outlined below (note that notation is preserved from the preceding section):
+Following this, reIndexer computes the correlation matrix of returns using the historical prices over a specific lookback period, and then performs the non-convex optimization necessary to compute SETF weights in the Global Minimum Variance Portfolio. A sequential quadratic programming solver from the Python library \textit{SciPy}\citeFormat{\cite{Oliphant2007PythonComputing}} was used to perform the optimization.
+
+The mathematical formulation for this process is outlined below (note that notation is preserved from the preceding section):
 
 \begin{gather*}
     \text{Let $\Omega$} = \text{Set of sectors in the candidate universe, $\Omega_i \in \{\Omega_1, \Omega_2, \ldots, \Omega_n\}$} \\
@@ -120,17 +122,46 @@ Following this, reIndexer computes the correlation matrix of returns using the h
         & & & \\
         \mathbb{E}[(\boldsymbol{\Pi}_{\Omega_n} - \mathbb{E}[\boldsymbol{\Pi}_{\Omega_n}])(\boldsymbol{\Pi}_{\Omega_1} - \mathbb{E}[\boldsymbol{\Pi}_{\Omega_1}])] & \mathbb{E}[(\boldsymbol{\Pi}_{\Omega_n} - \mathbb{E}[\boldsymbol{\Pi}_{\Omega_n}])(\boldsymbol{\Pi}_{\Omega_2} - \mathbb{E}[\boldsymbol{\Pi}_{\Omega_2}])] & \cdots & \mathbb{E}[(\boldsymbol{\Pi}_{\Omega_n} - \mathbb{E}[\boldsymbol{\Pi}_{\Omega_n}])^2] \\
     \end{bmatrix}
+    \\
+    \\
+    \therefore \, \text{Global minimum variance portfolio weights are determined by solving the non-convex optimization:}
 \end{gather*}
 
 \begin{equation*}
-    \therefore \, \text{Global minimum variance portfolio weights are determined by solving the non-convex optimization:}
     \begin{aligned}
-        & \underset{\boldsymbol{\omega}}{\text{minimize}} & & \boldsymbol{\omega}^\intercal \boldsymbol{\Sigma}
+        & \underset{\boldsymbol{\omega}}{\text{minimize}} & & \boldsymbol{\omega}^\intercal, \boldsymbol{\Sigma} \, \boldsymbol{\omega} \\
+        & \text{subject to}
+        & & \boldsymbol{1}^\intercal \cdot \boldsymbol{\omega} = 1 \\
+        & & & \omega_i \geq 0 \, \forall \,\omega_i \in \boldsymbol{\omega}
     \end{aligned}
 \end{equation*}
 
+This process of recomputing the weights of the SETFs in the portfolio is referred to as \textbf{Portfolio Rebalancing}.
+
+Similar to the SETF restructuring process, the portfolio rebalanacing process too occurs at discrete, user-specified time intervals. Additionally, as with the restructuring process, portfolio weights from the preceding timestep are used to compute the value of the portfolio at each intermediate timestep. This computation is outlined below:
+
+\begin{gather*}
+    \text{Let $\boldsymbol{\omega_{\tau}}$} = \text{SETF portfolio weights at time $\tau$} \\
+    \text{Let $\pi_{\boldsymbol{\Omega},\tau}$} = \text{Value of portfolio under sector universe $\boldsymbol{\Omega}$ at time $\tau$} \\
+    \\
+    \\
+    \Rightarrow \forall \, \{ i, \, j, \, \tau \} \, : \{ \{ i \in \boldsymbol{\Omega} \}; \, \{ j \in \boldsymbol{S_i} \}; \, \{ r_{t} < \tau \leq r_{t+m\delta t} < r_{t + 1} \} \}
+\end{gather*}
+\begin{align*}
+    \therefore \pi_{\boldsymbol{\Omega}, \tau} 
+    =& \; \Pi_{\boldsymbol{\Omega}} \cdot \boldsymbol{\omega} \\
+    =& \sum_{\boldsymbol{i \in \Omega}} \Pi_{\Omega_i, \tau} \cdot \omega_{i, \tau} \\
+    =& \sum_{i \in \boldsymbol{\Omega}} \boldsymbol{w}_{i, \tau} \cdot \boldsymbol{P}_{i, \tau} \cdot \omega_{i, \tau} \\
+    =& \sum_{i \in \boldsymbol{\Omega}} \sum_{j \in \boldsymbol{S}_i} w_{j, \tau} \cdot P_{j, \tau} \cdot \omega_{i, \tau}
+\end{align*}
+
+In addition to the portfolio value, other metrics are also recorded at each timestep. These include open positions, the sharpe ratio, the information ratio, and myriad other portfolio statistics. In this project, we do not utilize the full battery of statistics provied by Zipline, but we maintain the capability to generate these statistics for future expansion of reIndexer, and to maintain API compatibility with the Quantopian suite of analysis tools.
+
+\pagebreak
 
 \subsection{Software Architecture Overview}
+
+In this section, we describe the software architecture of reIndexer. Figure~\ref{fig:candidate_universe_ranking:reindexer_architecture} is the architecture diagram of the system, describing the logical flow of the system, from individual asset statistics on the left, to final trades executed with the Zipline engine on the right.
 
 \begin{figure}[h!]
     \centering
@@ -141,7 +172,28 @@ Following this, reIndexer computes the correlation matrix of returns using the h
     \label{fig:candidate_universe_ranking:reindexer_architecture}
 \end{figure}
 
+As seen in the diagram, SETFs are constructed from the bare asset statistics on the left, and are treated as unitary assets. Upon computation of SETF historical price chains (outlined above), the Global Minimum Variance Portfolio (with no short-sales) is computed by solving the non-convex optimization, also outlined above.
+
+Both of the intervals of comptuation for these distinct determinants of portfolio value, the asset weights in the SETF, and the SETF weights in the portfolio, are computed at discrete, user-configurable intervals and do not necessarily have to occur at the same time. This behavior allows to replicate the real market to a high degree of accuracy, as most popular ETFs are rebalanced on the third Friday of every month, whereas retail investor portfolios are typically rebalanced on the first trading day of each month. Furthermore, Zipline also maintains the full historical order book for each asset, thus providing realistic price drift effects when large orders are placed.
+
+After both computations are performed, individual trades are passed to the Zipline layer of the system (highlighted in red). These trades are only executed on the days of either SETF restructuring (i.e. $\boldsymbol{w}$ update) or portfolio rebalancing (i.e. $\boldsymbol{\omega}$ update). This provides us with a significant performance boost, as Zipline is optimized to record historical portfolio performance extremely quickly when trade execution is not required.
+
+As Zipline does not see the individual SETFs (they are maintained internally by reIndexer), it is necessary to compute the individual weight for a given asset when a trade is to be executed. Due to the fact that the portfolio of SETFs can be considered a portfolio of portfolios, which both have asset weights that sum to 1, the weight of an individual asset in the larger portfolio of SETFs is simply the product of its weight in the SETF, and the weight of the SETF in the global minimum variance portfolio. This computation is outlined below:
+
+\begin{gather*}
+    \text{Let $\boldsymbol{\Theta}$} = \text{Set of all assets in the simulation} \\
+    \text{Let $\boldsymbol{w}_i(\theta)$} = \text{Weight of asset $\theta$ in SETF $i$} \\
+    \text{Let $\boldsymbol{\omega}(\theta, i)$} = \text{Weight of SETF $i$ in the Global Minimum Variance Portfolio} \\
+    \text{Let $\gamma_\theta$} = \text{Adjusted weight of asset $\theta$ in the larger Zipline portfolio}
+    \\
+    \\
+    \therefore \, \gamma_\theta = \boldsymbol{w}_i(\theta) \cdot \boldsymbol{\omega}(\theta, i) \; \forall \; \{ \theta, i \} : \{ \{ \theta \in \boldsymbol{\Theta} \} ; \, \{ i \in \boldsymbol{\Omega} \} \}
+\end{gather*}
 
 
+
+\section{Performance Evaluation Metrics}
+
+test
 
 \end{document}
