@@ -15,8 +15,6 @@ Following the successful derivation of an objective sector classification heuris
         & \\
         \hline
     \end{tabular}
-    \caption{Specific project research goal RG-2.}
-    \label{table:candidate_universe_ranking:research_goal}
 \end{table}
 
 \section{Sample Learned Sector Universe}
@@ -194,6 +192,12 @@ As Zipline does not see the individual SETFs (they are maintained internally by 
 
 \section{Performance Evaluation Metrics}
 
-test
+To fully address RG-2 (see Section~\ref{research_goals:specific_research_goals}), we selected a set of objective criteria to record over the duration of each backtest, for each candidate learned sector universe. These metrics were selected to evaluate specific, but varied attributes of learned sector universe SETF portfolios, and will be evaluated independently to identify the optimal learned sector universe with respect to each metric.
+
+\subsection{Cumulative SETF Restructuring Turnover}
+
+As described above, a SETF event is the recomputation of constituent asset weights in a synthetic ETF, and is a user-configurable triggered event. In the financial markets today, sector ETFs are typically created and sold by financial institutions. This abundance of ETFs provides increased liquidity to the market, while also reducing the barrier for entry to retail investors to gain exposure to specific sectors.
+
+A key cost of creating and holding these ETFs for financial instutions is the fee incurred during ETF restructuring. Due to their enhanced status in the market, large financial institutions do not pay traditional commission fees charged to retail investors on trades in the market, but we believe it is valid to assume that their cost of trading would be proportional to the asset turnover of 
 
 \end{document}
