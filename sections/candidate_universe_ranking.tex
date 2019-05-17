@@ -2,7 +2,7 @@
 
 \begin{document}
     
-\chapter{Candidate Universe Ranking}
+\chapter{Candidate Universe Ranking} \label{candidate_universe_ranking}
     
 Following the successful derivation of an objective sector classification heuristic (addressing RG-1), the next step is to derive a methodology to rank our sectors against each other, to isolate the optimal sector/sectors, without imposing any subjective criteria on the selection. Thus, this section begins the discussion of addressing the second research goal, RG-2 (see Section~\ref{research_goals:specific_research_goals}):
 
@@ -19,7 +19,7 @@ Following the successful derivation of an objective sector classification heuris
 
 \section{Sample Learned Sector Universe} \label{candidate_universe_ranking:sample_ls}
 
-\begin{wrapfigure}[18]{r}{0.5\textwidth}
+\begin{wrapfigure}[21]{l}{0.6\textwidth}
     \centering
     \vspace{\wrapfigadjustment}
     \fbox{
@@ -33,7 +33,7 @@ To best motivate the approach we decided to use when comparing and ranking candi
 
 Figure~\ref{fig:candidate_universe_ranking:sample_ls_universe} is a Sankey Diagram, representing the new learned sector assignments of various corporations from our search space by means of comparison to the benchmark. The left-hand side of the diagram represents the original benchmark sectors, and their constituent assets, while the right hand side represents the new learned sector assignment of the same assets.
 
-As evidenced by the diagram, there appears to be significant transitory behavior of corporations across sectors when comparing the benchmark sectors to the learned sectors. Additionally, there also appears to be a significant amount of mixing between the sectors, with very few sectors appearing to be preserved between the sector universes. In the example, the only sector that can be considered remotely similar to a benchmark sector would be learned sector \textit{Alpha} to benchmark sector \textit{Financials}.
+As evidenced by the diagram, there appears to be significant transitory behavior of corporations across sectors when comparing the benchmark sectors to the learned sectors. Additionally, there also appears to be a large amount of mixing between the sectors, with very few sectors appearing to be preserved between the sector universes. This implies a stark lack of congruity between the benchmark classification and the learned sector universe heuristic. In the example, the only sector that can be considered remotely similar to a benchmark sector would be learned sector \textit{Alpha} to benchmark sector \textit{Financials}.
 
 Other sectors however, appear largely broken up and dispersed when comparing their benchmark sector to the new learned sector univese. Particularly noticable examples of this include the benchmark sectors \textit{Health Care}, \textit{Information Technology}, and \textit{Consumer Discretionary}. Due to the fundamentals-driven nature of our classification heuristic, this result is not entirely surprising; the benchmark sectors that appear to have the most dispersion in the learned sector universe are ones which are increasingly integral to regular business, regardless of sector; particularly \textit{Information Technology}.
 
@@ -43,7 +43,7 @@ Due to this fact, is would be extremely difficult to perform a sector-by-sector 
 
 To combat this issue, we decided to evaluate the sector universes as a whole, and then analyze universe-level metrics to rank the candidate learned sectors. To this end, we developed \textit{reIndexer}, which is discussed at length in the following section.
 
-\section{reIndexer}
+\section{reIndexer} \label{candidate_universe_ranking:reindexer}
 
 \begin{wrapfigure}[18]{r}{0.4\textwidth}
     \centering
@@ -51,7 +51,7 @@ To combat this issue, we decided to evaluate the sector universes as a whole, an
     \fbox{
     \includegraphics[width=.9\linewidth]{images/reIndexer_logo.png}
     }
-    \caption{The \textit{reIndexer} research tool.}
+    \caption{The \textit{reIndexer} backtest-driven sector universe evaluation research tool.}
     \label{fig:candidate_universe_ranking:reindexer_logo}
 \end{wrapfigure}
 
@@ -223,6 +223,8 @@ To avoid introducing specific cost bias to our evaluation, we simply record the 
     \\
     \Rightarrow \text{Portfolio Restructuring Turnover} = \left| \boldsymbol{\omega}_{\tau_{t + 1}}^\intercal - \boldsymbol{\omega}_{\tau_t}^\intercal \right| \cdot \boldsymbol{\pi}_{\tau_{t+1}}
 \end{gather*}
+
+\pagebreak
 
 \subsection{Portfolio Return}
 

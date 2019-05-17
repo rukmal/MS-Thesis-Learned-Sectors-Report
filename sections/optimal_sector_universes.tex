@@ -48,6 +48,8 @@ We now discuss the optimally peforming learned sector universe with respect to t
 
 As discussed in Section~\ref{candidate_universe_ranking:eval_metrics}, the cumulative turnover, for both SETF restructuring, and portfolio rebalancing, are designed to be a proxy for the cost of issuing, and holding these ETFs, respectively. The learned sector that performed best with respect to the cumulative turnover metrics has the following configuration:
 
+\vspace{0.5em}
+
 \begin{minipage}{\linewidth}
     \centering
     \bfseries
@@ -55,6 +57,8 @@ As discussed in Section~\ref{candidate_universe_ranking:eval_metrics}, the cumul
         Single Linkage; 5 Sectors
     }
 \end{minipage}
+
+\vspace{0.5em}
 
 The cost proxies each measure the effective cost of the SETF for entirely different segments of the Financial Lifecycle of this hypothetical product. The SETF restructuring turnover is a proxy for the cost that would be incurred by an ETF issuer (i.e. an institutional investor), whereas the portfolio rebalancing turnover is a proxy for the cost incurred by a holder of the ETF (i.e. a retail investor).
 
@@ -100,7 +104,7 @@ An interesting observation of this sector is that there is significant dispersio
 As with the sample sector classification discussed in Section~\ref{candidate_universe_ranking:sample_ls}, there appears to be high levels of dispersion of assets in sectors which are increasingly requisite to doing business. This is particularly evident (again, ignoring sector \textit{Alpha}) through the dispersion of the \textit{Information Technology}, \textit{Health Care}, and \textit{Consumer Discretionary} sectors.
 
 
-\section{Risk-Adjusted Return Optimal Universe}
+\section{Risk-Adjusted Return Optimal Universe} \label{optimal_sector_universe:risk_adj_return_optimal}
 
 Finally, to isolate the sector with the maximum rolling annualized Sharpe ratio, we computed the mean rolling Sharpe ratio across the longitudinal temporal axis, and compared each of the learned sectors. Following this comparison, we determined that the learned sector that had the maximum average rolling Sharpe Ratio over the lookback period has the following configuration:
 
