@@ -4,11 +4,23 @@
     
 \chapter{Conclusion}
     
-In this section, we will reiterate our main findings, and relate them back to our specific research goals (initially outlined in Section~\ref{research_goals:specific_research_goals}) and our thesis statement.
+In this section, we will reiterate our main findings, and relate them back to our specific research goals and thesis statement, initially outlined in Section~\ref{research_goals}.
 
-\section{Specific Research Goals}
+\vspace{-.5em}
 
-\subsection{Research Goal 1}
+% See: https://www.slideshare.net/linjaaho/how-to-make-boxed-text-with-latex
+% See: ftp://ftp.dante.de/tex-archive/graphics/bclogo/doc/bclogo-doc.pdf [Its in French lmfao]
+\begin{center}
+    \begin{minipage}{0.7\textwidth}
+        \begin{bclogo}[couleur=blue!30, arrondi=0.1, logo=\bcloupe, ombre=false]{\;Thesis Statement}
+            Utilize relationships in the idiosyncratic characteristics of corporations to inform a fundamentals-driven, non-subjective sector classification framework.
+        \end{bclogo}
+    \end{minipage}
+\end{center}
+
+\vspace{-1.5em}
+
+\section{Research Goal 1}
 
 \begin{table}[h!]
     \centering
@@ -21,9 +33,14 @@ In this section, we will reiterate our main findings, and relate them back to ou
     \end{tabular}
 \end{table}
 
-In the first portion of the report, we address this specific research goal by outlining our target data sources (see Section~\ref{feature_selection}), the benchmark we plan to use for comparison, and how our specifically selected fields from our data sources relate and reinforce our research objective. Following this, we recognized that in order to maintain the level of objectivity enforced by RG-1, we would have to use an unsupervised learning method to determine our candidate learned sector universes. To this end, we conducted a survey of potential methodologies and identified Hierarchical Clustering as our target methodology in Section~\ref{unsupervised_learning_methods_survey}. In Section~\ref{hierarchical_clustering_model}, we parameterized our HCA heuristic, and identified our search space. We then computed a set of candidate learned sector universes, fully addressing RG-1.
+\begin{itemize}
+    \item In the first portion of the report, we begin to address RG-1 goal by outlining our target data sources (see Section~\ref{feature_selection}), the benchmark we plan to use for comparison, and how our specifically selected fields from our data sources relate to, and reinforce our research objective.
+    \item Following this, we recognized that in order to maintain the level of objectivity enforced by RG-1, we would have to use an unsupervised learning method to determine our candidate learned sector universes. To this end, we conducted a survey of potential methodologies and identified Hierarchical Clustering as our target methodology in Section~\ref{unsupervised_learning_methods_survey}.
+    \item In Section~\ref{hierarchical_clustering_model}, we parameterized our HCA heuristic, and identified our search space consisting of 60 candidate learned sector universes. We then computed a set of candidate learned sector universes, fully addressing RG-1.
+\end{itemize}
 
-\subsection{Research Goal 2}
+
+\section{Research Goal 2}
 
 \begin{table}[h!]
     \centering
@@ -36,7 +53,39 @@ In the first portion of the report, we address this specific research goal by ou
     \end{tabular}
 \end{table}
 
-The second portion of the report was dedicated to addressing RG-2. This process begain in Section~\ref{candidate_universe_ranking}
+\begin{itemize}
+    \item The second portion of the report was dedicated to addressing RG-2. This process began in Section~\ref{candidate_universe_ranking}, where we outlined the scope of RG-2. Following this, we introduced reIndexer, the backtest-driven sector universe evaluation research tool that powered the validation portion of our project (see Section~\ref{candidate_universe_ranking:reindexer}).
+    \item Next, we utilized reIndexer to rank our candidate learned sector universes, and computed a set of performance metrics (see Section~\ref{candidate_universe_ranking:eval_metrics}) for each of our 60 candidate learned sector universes using reIndexer.
+    \item Finally in Section~\ref{optimal_sector_universes}, we utilized these performance metrics to identify the risk-adjusted return optimal learned sector universe (Complete Linkage; 17 Sectors), and therefore completing RG-2.
+\end{itemize}
 
+\section{Research Goal 3}
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{| c | c |}
+        \hline
+        &  \\
+        RG-3 & Evaluate our risk-adjusted return optimal sector universe against the benchmark. \\
+        & \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{itemize}
+    \item The final research goal of this report was addressed in Section~\ref{benchmark_comparison}.
+    \item We compared the risk-adjusted return optimal learned sector universe to the benchmark (i.e. \textit{GICS S\&P 500 Classification} sector universe utilizing reIndexer, and the same performance metrics used to rank the candidate learned sector universes.
+    \item Our comparison showed that the benchmark sector universe provided a lower level of both SETF restructuring and portfolio rebalancing turnover compared to the risk-adjusted return optimal learned sector universe. However, the learned sector universe significantly outperformed the benchmark universe with respect to total portfolio return and rolling risk-adjusted return.
+    \item Following this, we conducted a thorough quantitative and qualitative analysis of the reIndexer output for both the risk-adjusted return optimal learned sector universe, and the benchmark sector universe.
+    \item We conclude that our risk-adjusted optimal learned sector universe does indeed provide a superior diversification profile compared to the benchmark universe, thus fully realizing RG-3.
+\end{itemize}
+
+\vspace*{\fill}
+
+\begin{center}
+    \bfseries Having addressed our specific research goals, RG-1, RG-2, and RG-3, we assert and affirm that we fully explored the scope of the thesis statement of our FE 800 Project in Spring Semester, 2019.
+\end{center}
+
+\vspace*{\fill}
 
 \end{document}
