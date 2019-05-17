@@ -5,15 +5,19 @@
 \appendix
 \renewcommand\chaptername{Appendix}  % This is to change 'chapter' to 'appendix' in the header
 
+% Uncomment these lines (up to \chapter) to suppress appendix name in the header
+% Uncommenting leaves just chapter name and number, eg: "Appendix A"
+
 % \fancypagestyle{plain}{
-%     \fancyhead[RE,LO]{\chaptername \ \thechapter}
+%     \fancyhead[LE,RO]{\chaptername \ \thechapter}
 % }
 
-\fancypagestyle{appendix}{
-    \fancyhead[RE,LO]{\chaptername \ \thechapter}
-}
 
-\pagestyle{appendix}
+% \fancypagestyle{appendix}{
+%     \fancyhead[LE,RO]{\chaptername \ \thechapter}
+% }
+
+% \pagestyle{appendix}
 
 \chapter{Backtest Visualization} \label{appendix:backtest_visualization}
 
