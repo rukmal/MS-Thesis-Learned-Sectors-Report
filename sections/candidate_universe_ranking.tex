@@ -182,7 +182,7 @@ As Zipline does not see the individual SETFs (they are maintained internally by 
     \text{Let $\boldsymbol{\Theta}$} = \text{Set of all assets in the simulation} \\
     \text{Let $\boldsymbol{w}_i(\theta)$} = \text{Weight of asset $\theta$ in SETF $i$} \\
     \text{Let $\boldsymbol{\omega}(\theta, i)$} = \text{Weight of SETF $i$ in the Global Minimum Variance Portfolio} \\
-    \text{Let $\gamma_\theta$} = \text{Adjusted weight of asset $\theta$ in the larger Zipline portfolio}
+    \text{Let $\gamma_\theta$} = \text{True weight of asset $\theta$ in the larger Zipline portfolio}
     \\
     \\
     \therefore \, \gamma_\theta = \boldsymbol{w}_i(\theta) \cdot \boldsymbol{\omega}(\theta, i) \; \forall \; \{ \theta, i \} : \{ \{ \theta \in \boldsymbol{\Theta} \} ; \, \{ i \in \boldsymbol{\Omega} \} \}
@@ -194,10 +194,73 @@ As Zipline does not see the individual SETFs (they are maintained internally by 
 
 To fully address RG-2 (see Section~\ref{research_goals:specific_research_goals}), we selected a set of objective criteria to record over the duration of each backtest, for each candidate learned sector universe. These metrics were selected to evaluate specific, but varied attributes of learned sector universe SETF portfolios, and will be evaluated independently to identify the optimal learned sector universe with respect to each metric.
 
-\subsection{Cumulative SETF Restructuring Turnover}
+\subsection{SETF Restructuring Turnover}
 
 As described above, a SETF event is the recomputation of constituent asset weights in a synthetic ETF, and is a user-configurable triggered event. In the financial markets today, sector ETFs are typically created and sold by financial institutions. This abundance of ETFs provides increased liquidity to the market, while also reducing the barrier for entry to retail investors to gain exposure to specific sectors.
 
-A key cost of creating and holding these ETFs for financial instutions is the fee incurred during ETF restructuring. Due to their enhanced status in the market, large financial institutions do not pay traditional commission fees charged to retail investors on trades in the market, but we believe it is valid to assume that their cost of trading would be proportional to the asset turnover of 
+A key cost of creating and holding these ETFs for financial instutions is the fee incurred during ETF restructuring. Due to their enhanced status in the market, large financial institutions do not pay traditional commission fees charged to retail investors when executing trades on a stock exchange.
+
+However, we believe it is valid to assume that their cost of trading would be proportional to the asset turnover of the component assets at each of these restructuring times. Therefore, we chose to record the component SETF asset restructuring turnover at each time a restructure is triggered, and utilize it as a proxy for judging the cost to financial institutions that would be incentivized to create ETFs of these sectors if they were indeed real. The mathematical formulation of this turnover for a single restructuring event is outlined below:
+
+\begin{gather*}
+    \text{Let $r_t$ and $r_{t+1}$} = \text{Times SETF restructures are triggered} \\
+    \text{Let $\boldsymbol{w}_\tau$} = \text{Vector of underlying asset weights in the SETF at time $\tau$} \\
+    \text{Let $\boldsymbol{P}_\tau$} = \text{Vector of underlying SETF asset prices at time $\tau$} \\
+    \\
+    \Rightarrow \text{SETF Restructuring Turnover} = \left| \boldsymbol{w}_{r_{t+1}}^\intercal - \boldsymbol{w}_{r_{t}}^\intercal \right| \cdot \boldsymbol{P}_{r_{t + 1}}
+\end{gather*}
+
+\subsection{Portfolio Rebalancing Turnover}
+
+Similar to how we treat the SETF restructuring turnover as a proxy for the cost to a financial institution to create the SETFs in the real market, we treat the portfolio rebalancing turnover as a proxy for the cost to a retail investor holding the SETFs in a portfolio.
+
+To avoid introducing specific cost bias to our evaluation, we simply record the turnover of each SETF at each portfolio rebalance event. The mathematical formulation of this turnover for a single rebalancing event is outlined below:
+
+\begin{gather*}
+    \text{Let $\tau_t$ and $\tau_{t+1}$} = \text{Times portoflio rebalancing events are triggered} \\
+    \text{Let $\boldsymbol{\omega}_t$} = \text{Vector of SETF weights in the portfolio at time $t$} \\
+    \text{Let $\boldsymbol{\pi}_t$} = \text{Vector of prices of SETFs in the portfolio at time $t$} \\
+    \\
+    \Rightarrow \text{Portfolio Restructuring Turnover} = \left| \boldsymbol{\omega}_{\tau_{t + 1}}^\intercal - \boldsymbol{\omega}_{\tau_t}^\intercal \right| \cdot \boldsymbol{\pi}_{\tau_{t+1}}
+\end{gather*}
+
+\subsection{Portfolio Return}
+
+We also record the overall portfolio return over time. The computation of portfolio value at each timestep is discussed in depth in the previous section.
+
+\subsection{Sharpe Ratio}
+
+To best evaluate our initial hypothesis that our learned sector classification heuristic - based on objective fundamentals data - would provide better economically diversified sector classifications, we must test the diversification benefit of our learned sector universes, relative to the benchmark. Similarly, we also utilize this metric to isolate the optimal learned sector universe portfolio with respect to this diversification benefit metric.
+
+As we are already computing the global minimum variance portfolio with no short sales, the total variance of the portfolio is minimized. Due to this fact, we can treat the risk-adjusted return (i.e. the Sharpe Ratio) as a metric for quantifying the diversification benefit of each learned sector classficiation universe with respect to a single unit of risk. The mathematical formulation of risk-adjusted return captured by reIndexer is reproduced below (parameterized by the annualized portfolio return, $R_p$ and the portfolio variance $\sigma_p$):
+
+\begin{gather*}
+    \text{Sharpe Ratio} = \frac{R_p - r_f}{\sigma_p}
+\end{gather*}
+
+
+\section{Backtest Configuration}
+
+A backtest was performed on all 60 candidate learned sector universes with the following configuration:
+
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Configuration Parameter} & \textbf{Setting} \\
+        \hline
+        Start Date & January 1, 2012 \\
+        End Date & December 31, 2017 \\
+        SETF Restructure Trigger & Third Friday of each month \\
+        Portfolio Rebalance Trigger & First trading day of each month \\
+        Starting Capital & \$10,000,000,000 \\
+        Backtest Frequency & Daily \\
+        \hline
+    \end{tabular}
+    \caption{Learned sector universe backtest configuration parameters.}
+    \label{table:candidate_universe_ranking:backtest_configuration}
+\end{table}
+
+\textit{Note: A high initial capital base is necessary to account for the fact that Zipline does not allow for fractional asset trades. Using a large capital base mitigates the rounding effect caused by this behavior.}
 
 \end{document}
