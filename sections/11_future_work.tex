@@ -4,6 +4,26 @@
     
 \chapter{Future Work}
     
-\textbf{Hello, world!}
+In this section, we very briefly outline potential avenues for future research, building on the lessons learned during the course of this project.
+
+\section{HCA Model Tuning}
+
+Given the abundant pooling behavior (i.e. single large sector, and many single-asset sectors) of some of the hierarchical clustering models, it would be an extremely beneficial improvement to investigate methodologies to smooth the distribution of assets in the learned sectors.
+
+\section{Varied ETF Construction Heuristics}
+
+Currently, reIndexer creates and maintains price-weighted synthetic ETFs. However, a majority of market indexes today are market capitalization weighted, rather than price-weighted. A key improvement to reIndexer would be the implementation of market capitalization weighted SETFs, in addition to the current price-weighted SETF implementation.
+
+\section{Temporal Variation of Sector Assignments}
+
+As discussed in the report, we were unable to acquire historical sector assignment data for our benchmark sector universe, the \textit{GICS S\&P 500 Classification}. Due to this, we limited the scope of our sector ranking and benchmark evaluation to only use the latest fundamentals data we had available; 2017.
+
+Given longitudinal sector assignment data for a collection of assets, reIndexer can be extended to be compatible with temporally varying sectors, increasing the overall accuracy of the evaluation system. This system would enable us to more accurately track metrics such as the SETF restructuring turnover over time, while also providing a more accurate assessment of the holding cost of SETFs to retail investors (i.e. portfolio rebalancing turnover).
+
+\section{Existing Sectorization Scheme Ranking}
+
+In addition to being an excellent tool for comparing hypothetical sector universes, reIndexer may also be used to compare existing sector classification schemes. That is, it may hypothetically be used to compare the performance of the GICS classification scheme against the FTSE classification scheme.
+
+Similar to the analysis performed with the hypothetical sector universes, a \textit{divsersification ranking} of sorts of existing sector universes may be developed.
 
 \end{document}
