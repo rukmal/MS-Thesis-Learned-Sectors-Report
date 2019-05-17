@@ -122,7 +122,9 @@ The Sankey diagram corresponding to the risk-adjusted return optimal learned sec
 
 As this learned sector universe provides the best risk-adjusted return on an already variance-minimized Global Minimum Variance Portfolio comparison, it would imply that this configuration provides the best risk diversification profile out of all of the candidate learned sector universes. In addition to the obviously highly prevalent dispersion from the benchmark classification to the new learned sectors, the size of each of the sectors is also consierably more even compared to its peers. This would imply a better portfolio-level diversification profile, as poorly performing sectors can be underweight during times of low implied risk-adjusted return. This is a key caveat of the pooling behavior particularly prevelant under the Single Linkage heuristic.
 
-\begin{figure}[h]
+This lack of transitivity, combined with the implication that a higher risk-adjusted return implies a better risk-diversification profile would suggest that the learned sector universe heuristic is providing high levels of economic diversification, which appears to be at odds with the benchmark classification.
+
+\begin{figure}
     \centering
     \fbox{
         \includegraphics[width=0.9\linewidth]{images/complete_2017_17.png}
@@ -130,7 +132,5 @@ As this learned sector universe provides the best risk-adjusted return on an alr
     \caption{Learned sector universe with maximum rolling Sharpe ratio.}
     \label{fig:optimal_sector_universe:max_sharpe}
 \end{figure}
-
-This lack of transitivity, combined with the implication that a higher risk-adjusted return implies a better risk-diversification profile would suggest that the learned sector universe heuristic is providing high levels of economic diversification, which appears to be at odds with the benchmark classification.
 
 \end{document}

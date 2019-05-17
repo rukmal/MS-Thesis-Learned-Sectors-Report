@@ -6,18 +6,19 @@
 \usepackage[authordate, maxcitenames=1]{biblatex-chicago} % chicago bibliography style
 \usepackage{caption} % Captions
 \usepackage{csquotes} % For chicago bibliography style
+\usepackage[type={CC}, modifier={by}, version={3.0}]{doclicense} % Licenses
 \usepackage{enumerate} % Special enumeration
 \usepackage{fancyhdr} % Fancy heders
 \usepackage{float} % Figure position
 \usepackage[hang, bottom]{footmisc} % Advanced footer formatting
 \usepackage[toc]{glossaries} % Glossary
 \usepackage{graphicx} % Graphics
+\usepackage[hidelinks]{hyperref} % Hyperlinksxx
 \usepackage{longtable} % Long tables
 \usepackage{parskip} % Custom skips
 \usepackage{relsize} % Relative sizing
 \usepackage{rotating} % Rotated images
 \usepackage{wrapfig} % Text wrapping around figures
-
 \allowdisplaybreaks[1]
 \setlength{\footnotemargin}{1em}
 \footskip 35pt
@@ -115,11 +116,47 @@
 
 
 % Blank page without messing up page numbers
+% Page right after title with project info
 %===========================================
 
 % See: https://tex.stackexchange.com/questions/36880/insert-a-blank-page-after-current-page
-\newcommand{\blankpage}{
-    \null
+\newcommand{\innerCover}{
+    \vspace*{\fill}
+        \begin{center}
+        % \fbox{
+        \begin{minipage}{.75\linewidth}
+
+        \doclicenseThis
+        
+        \vspace{2em}
+        \hrule
+        \vspace{2em}
+        
+        The underlying source code is licensed under the MIT License: \\
+        \\
+        \texttt{Copyright (c) 2019 Rukmal Weerawarana, Yiyi Zhu, Yuzhen He \\
+        \\
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions: \\
+        \\
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software. \\
+        \\
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.}
+        \end{minipage}
+        % }
+        \end{center}
+    \vspace*{\fill}
     \thispagestyle{empty}
     \addtocounter{page}{-1}
     \newpage
