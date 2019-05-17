@@ -17,13 +17,13 @@ Following the successful derivation of an objective sector classification heuris
     \end{tabular}
 \end{table}
 
-\section{Sample Learned Sector Universe}
+\section{Sample Learned Sector Universe} \label{candidate_universe_ranking:sample_ls}
 
 \begin{wrapfigure}[18]{r}{0.5\textwidth}
     \centering
     \vspace{\wrapfigadjustment}
     \fbox{
-    \includegraphics[width=\linewidth]{images/sample_ls_universe.png}
+    \includegraphics[width=.9\linewidth]{images/sample_ls_universe.png}
     }
     \caption{Sample learned sector universe - Ward Linkage; 2010 Data; 10 Sectors.}
     \label{fig:candidate_universe_ranking:sample_ls_universe}
@@ -49,7 +49,7 @@ To combat this issue, we decided to evaluate the sector universes as a whole, an
     \centering
     \vspace{\wrapfigadjustment}
     \fbox{
-    \includegraphics[width=\linewidth]{images/reIndexer_logo.png}
+    \includegraphics[width=.9\linewidth]{images/reIndexer_logo.png}
     }
     \caption{The \textit{reIndexer} research tool.}
     \label{fig:candidate_universe_ranking:reindexer_logo}
@@ -94,7 +94,7 @@ At each of these intermediate timesteps, the price-weighted SETF will have a pri
 reIndexer provides an extremely flexible interface to specify SETF restructuring trigger times, $\{ r_t, r_{t+1}, \ldots, r_{t+n} \}$. The restructure can be triggered on any specific day of any specific week of the month (eg: third Friday of each month), or simply the first trading day of each month. Additionally, it also handles intelligent rebalancing rollovers, in the event that the specified rebalancing date trigger is a holiday with respect to the configured trading calendar.
 
 
-\subsection{Efficient Portfolio Optimization}
+\subsection{Efficient Portfolio Optimization} \label{candidate_universe_ranking:port_optim}
 
 Following the construction of the SETFs, reIndexer builds an efficient portfolio, treating each of the SETFs as distinct, unitary assets. As our goal with the project is to assess the benefit of fundamentals-driven objective sector classifications through the lens of risk diversification, reIndexer currently implements a backtest of a Global Minimum Variance Portfolio, not allowing short-sales.
 
@@ -153,7 +153,7 @@ Similar to the SETF restructuring process, the portfolio rebalanacing process to
     =& \sum_{i \in \boldsymbol{\Omega}} \sum_{j \in \boldsymbol{S}_i} w_{j, \tau} \cdot P_{j, \tau} \cdot \omega_{i, \tau}
 \end{align*}
 
-In addition to the portfolio value, other metrics are also recorded at each timestep. These include open positions, the sharpe ratio, the information ratio, and myriad other portfolio statistics. In this project, we do not utilize the full battery of statistics provied by Zipline, but we maintain the capability to generate these statistics for future expansion of reIndexer, and to maintain API compatibility with the Quantopian suite of analysis tools.
+In addition to the portfolio value, other metrics are also recorded at each timestep. These include open positions, the sharpe ratio, the information ratio, and myriad other portfolio statistics. In this project, we do not utilize the full battery of statistics provied by Zipline (over 30 individual statistics in total), but we maintain the capability to generate these statistics for future expansion of reIndexer, and to maintain API compatibility with the Quantopian suite of analysis tools.
 
 \pagebreak
 
@@ -190,7 +190,7 @@ As Zipline does not see the individual SETFs (they are maintained internally by 
 
 
 
-\section{Performance Evaluation Metrics}
+\section{Performance Evaluation Metrics} \label{candidate_universe_ranking:eval_metrics}
 
 To fully address RG-2 (see Section~\ref{research_goals:specific_research_goals}), we selected a set of objective criteria to record over the duration of each backtest, for each candidate learned sector universe. These metrics were selected to evaluate specific, but varied attributes of learned sector universe SETF portfolios, and will be evaluated independently to identify the optimal learned sector universe with respect to each metric.
 
@@ -239,7 +239,7 @@ As we are already computing the global minimum variance portfolio with no short 
 \end{gather*}
 
 
-\section{Backtest Configuration}
+\section{Backtest Configuration} \label{candidate_universe_ranking:backtest_config}
 
 A backtest was performed on all 60 candidate learned sector universes with the following configuration:
 
