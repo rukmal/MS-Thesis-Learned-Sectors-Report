@@ -1,0 +1,363 @@
+symbol,old_sector,new_sector
+A,Health Care,Golf
+AAP,Consumer Discretionary,Golf
+AAPL,Information Technology,Golf
+ABC,Health Care,Kilo
+ABT,Health Care,Alpha
+ACN,Information Technology,India
+ADBE,Information Technology,Golf
+ADI,Information Technology,Alpha
+ADM,Consumer Staples,India
+ADP,Information Technology,Alpha
+ADS,Information Technology,Alpha
+AEE,Utilities,Alpha
+AEP,Utilities,Alpha
+AES,Utilities,Golf
+AGN,Health Care,Alpha
+AIG,Financials,Alpha
+AJG,Financials,Alpha
+AKAM,Information Technology,Golf
+ALGN,Health Care,Golf
+ALK,Industrials,Golf
+ALL,Financials,Alpha
+ALXN,Health Care,Alpha
+AMAT,Information Technology,Golf
+AMD,Information Technology,Lima
+AME,Industrials,Golf
+AMG,Financials,Delta
+AMGN,Health Care,Golf
+AMZN,Consumer Discretionary,Lima
+ANTM,Health Care,India
+AON,Financials,Alpha
+AOS,Industrials,Golf
+APC,Energy,Delta
+APD,Materials,Golf
+APH,Information Technology,Golf
+APTV,Consumer Discretionary,Golf
+ARE,Real Estate,Golf
+ATVI,Information Technology,Golf
+AVB,Real Estate,Golf
+AVGO,Information Technology,Golf
+AVY,Materials,Golf
+AWK,Utilities,Golf
+AXP,Financials,Alpha
+AYI,Industrials,Golf
+AZO,Consumer Discretionary,Mike
+BA,Industrials,Golf
+BAC,Financials,Alpha
+BAX,Health Care,Golf
+BBT,Financials,Alpha
+BBY,Consumer Discretionary,Hotel
+BDX,Health Care,Alpha
+BEN,Financials,Golf
+BIIB,Health Care,Golf
+BK,Financials,Alpha
+BKNG,Consumer Discretionary,Foxtrot
+BLL,Materials,Golf
+BRK.B,Financials,Alpha
+BSX,Health Care,Golf
+BWA,Consumer Discretionary,Golf
+BXP,Real Estate,Golf
+C,Financials,Alpha
+CAH,Health Care,Kilo
+CAT,Industrials,Golf
+CB,Financials,Alpha
+CBOE,Financials,Alpha
+CCI,Real Estate,Golf
+CCL,Consumer Discretionary,Golf
+CDNS,Information Technology,Lima
+CERN,Health Care,Golf
+CF,Materials,Golf
+CHD,Consumer Staples,Golf
+CHTR,Consumer Discretionary,Golf
+CI,Health Care,Alpha
+CINF,Financials,Alpha
+CL,Consumer Staples,Mike
+CLX,Consumer Staples,Mike
+CMA,Financials,Alpha
+CMCSA,Consumer Discretionary,Golf
+CME,Financials,Alpha
+CMG,Consumer Discretionary,India
+CMI,Industrials,Golf
+CMS,Utilities,Golf
+CNC,Health Care,India
+CNP,Utilities,Golf
+COF,Financials,Alpha
+COL,Industrials,Alpha
+COO,Health Care,Golf
+COP,Energy,Delta
+COST,Consumer Staples,Hotel
+CPB,Consumer Staples,Golf
+CSCO,Information Technology,Golf
+CSX,Industrials,Golf
+CTSH,Information Technology,Golf
+CTXS,Information Technology,Golf
+CVS,Consumer Staples,India
+CVX,Energy,Delta
+CXO,Energy,Delta
+DAL,Industrials,Golf
+DE,Industrials,Alpha
+DFS,Financials,Alpha
+DGX,Health Care,Golf
+DHI,Consumer Discretionary,Papa
+DHR,Health Care,Alpha
+DIS,Consumer Discretionary,Golf
+DISCA,Consumer Discretionary,Golf
+DISH,Consumer Discretionary,Delta
+DLR,Real Estate,Golf
+DOV,Industrials,Golf
+DRE,Real Estate,Golf
+DTE,Utilities,Alpha
+DUK,Utilities,Alpha
+DVA,Health Care,Golf
+DWDP,Materials,Alpha
+EBAY,Information Technology,Golf
+ECL,Materials,Golf
+ED,Utilities,Alpha
+EFX,Industrials,Golf
+EIX,Utilities,Alpha
+EL,Consumer Staples,Foxtrot
+EMR,Industrials,Golf
+EOG,Energy,Echo
+EQIX,Real Estate,Golf
+EQR,Real Estate,Golf
+ES,Utilities,Alpha
+ESS,Real Estate,Golf
+ETFC,Financials,Alpha
+ETN,Industrials,Golf
+ETR,Utilities,Alpha
+EW,Health Care,Golf
+EXC,Utilities,Alpha
+EXPD,Industrials,India
+EXPE,Consumer Discretionary,Foxtrot
+F,Consumer Discretionary,Golf
+FAST,Industrials,Mike
+FB,Information Technology,Charlie
+FBHS,Industrials,Golf
+FCX,Materials,Golf
+FE,Utilities,Golf
+FFIV,Information Technology,Charlie
+FIS,Information Technology,Golf
+FISV,Information Technology,Golf
+FITB,Financials,Alpha
+FLIR,Information Technology,Golf
+FLR,Industrials,India
+FLS,Industrials,Golf
+FMC,Materials,Alpha
+FOXA,Consumer Discretionary,Golf
+FRT,Real Estate,Golf
+GD,Industrials,Golf
+GILD,Health Care,Golf
+GLW,Information Technology,Golf
+GM,Consumer Discretionary,Golf
+GPC,Consumer Discretionary,Golf
+GPN,Information Technology,Alpha
+GRMN,Consumer Discretionary,Golf
+GT,Consumer Discretionary,Golf
+GWW,Industrials,Hotel
+HAL,Energy,Golf
+HAS,Consumer Discretionary,Foxtrot
+HBAN,Financials,Alpha
+HBI,Consumer Discretionary,Golf
+HCA,Health Care,November
+HCP,Real Estate,Golf
+HD,Consumer Discretionary,Mike
+HES,Energy,Echo
+HIG,Financials,Alpha
+HII,Industrials,Golf
+HOLX,Health Care,Golf
+HON,Industrials,Golf
+HP,Energy,Echo
+HPQ,Information Technology,India
+HRL,Consumer Staples,Golf
+HRS,Information Technology,Golf
+HSIC,Health Care,Golf
+HST,Real Estate,Golf
+HSY,Consumer Staples,Mike
+HUM,Health Care,India
+IBM,Information Technology,Golf
+ICE,Financials,Alpha
+IDXX,Health Care,Golf
+ILMN,Health Care,Golf
+INCY,Health Care,Bravo
+INFO,Industrials,Alpha
+INTC,Information Technology,Golf
+INTU,Information Technology,Charlie
+IP,Materials,Golf
+IPG,Consumer Discretionary,Alpha
+IPGP,Information Technology,Golf
+IR,Industrials,Golf
+IRM,Real Estate,Golf
+ISRG,Health Care,Golf
+IT,Information Technology,Alpha
+ITW,Industrials,Golf
+JBHT,Industrials,India
+JCI,Industrials,Golf
+JEC,Industrials,India
+JNJ,Health Care,Golf
+JNPR,Information Technology,Golf
+JPM,Financials,Alpha
+JWN,Consumer Discretionary,Hotel
+K,Consumer Staples,Golf
+KEY,Financials,Alpha
+KIM,Real Estate,Golf
+KLAC,Information Technology,Golf
+KMB,Consumer Staples,Golf
+KMI,Energy,Golf
+KO,Consumer Staples,Golf
+KSU,Industrials,Golf
+LEG,Consumer Discretionary,Golf
+LEN,Consumer Discretionary,Papa
+LH,Health Care,Alpha
+LKQ,Consumer Discretionary,Golf
+LLL,Industrials,Golf
+LLY,Health Care,Golf
+LMT,Industrials,Golf
+LNT,Utilities,Alpha
+LOW,Consumer Discretionary,Hotel
+LRCX,Information Technology,Golf
+LUV,Industrials,Golf
+LYB,Materials,Golf
+M,Consumer Discretionary,Golf
+MA,Information Technology,Charlie
+MAC,Real Estate,Golf
+MAS,Industrials,Golf
+MAT,Consumer Discretionary,Foxtrot
+MCD,Consumer Discretionary,Golf
+MDLZ,Consumer Staples,Alpha
+MET,Financials,Alpha
+MGM,Consumer Discretionary,Golf
+MHK,Consumer Discretionary,Golf
+MKC,Consumer Staples,Alpha
+MMC,Financials,Golf
+MMM,Industrials,Golf
+MNST,Consumer Staples,Golf
+MO,Consumer Staples,Golf
+MOS,Materials,Alpha
+MRO,Energy,Delta
+MSFT,Information Technology,Golf
+MSI,Information Technology,Golf
+MTB,Financials,Alpha
+MTD,Health Care,Golf
+MU,Information Technology,Golf
+NAVI,Financials,Alpha
+NBL,Energy,Delta
+NCLH,Consumer Discretionary,Golf
+NDAQ,Financials,Alpha
+NEE,Utilities,Golf
+NEM,Materials,Golf
+NFLX,Information Technology,Alpha
+NI,Utilities,Alpha
+NKTR,Health Care,Juliett
+NLSN,Industrials,Golf
+NOC,Industrials,Alpha
+NOV,Energy,Alpha
+NSC,Industrials,Golf
+NTRS,Financials,Alpha
+NUE,Materials,Golf
+NVDA,Information Technology,Charlie
+NWL,Consumer Discretionary,Golf
+O,Real Estate,Golf
+OMC,Consumer Discretionary,Alpha
+ORLY,Consumer Discretionary,Mike
+OXY,Energy,Delta
+PBCT,Financials,Alpha
+PCAR,Industrials,Alpha
+PEP,Consumer Staples,Golf
+PG,Consumer Staples,Golf
+PH,Industrials,Golf
+PHM,Consumer Discretionary,Papa
+PKI,Health Care,Alpha
+PLD,Real Estate,Delta
+PM,Consumer Staples,Golf
+PNR,Industrials,Golf
+PNW,Utilities,Alpha
+PPG,Materials,Golf
+PPL,Utilities,Golf
+PRGO,Health Care,Golf
+PSX,Energy,Delta
+PWR,Industrials,India
+QCOM,Information Technology,Golf
+RCL,Consumer Discretionary,Golf
+RE,Financials,Alpha
+REG,Real Estate,Golf
+REGN,Health Care,Golf
+RF,Financials,Alpha
+RHI,Industrials,Mike
+RJF,Financials,Alpha
+RMD,Health Care,Golf
+ROK,Industrials,Golf
+ROP,Industrials,Alpha
+RSG,Industrials,Golf
+RTN,Industrials,Golf
+SBAC,Real Estate,November
+SBUX,Consumer Discretionary,Oscar
+SCHW,Financials,Papa
+SEE,Materials,Golf
+SHW,Materials,Golf
+SIVB,Financials,Alpha
+SLB,Energy,Alpha
+SLG,Real Estate,Golf
+SNA,Consumer Discretionary,Golf
+SNPS,Information Technology,Golf
+SO,Utilities,Alpha
+SPG,Real Estate,Golf
+SPGI,Financials,Golf
+SRE,Utilities,Alpha
+STI,Financials,Alpha
+STT,Financials,Alpha
+STX,Information Technology,Golf
+SWK,Consumer Discretionary,Golf
+SWKS,Information Technology,Charlie
+SYK,Health Care,Golf
+SYY,Consumer Staples,Hotel
+T,Telecommunication Services,Golf
+TAP,Consumer Staples,Alpha
+TDG,Industrials,November
+TEL,Information Technology,Golf
+TPR,Consumer Discretionary,Golf
+TRIP,Consumer Discretionary,Foxtrot
+TROW,Financials,Oscar
+TRV,Financials,Alpha
+TSCO,Consumer Discretionary,Hotel
+TSN,Consumer Staples,India
+TSS,Information Technology,Golf
+TXN,Information Technology,Charlie
+TXT,Industrials,Golf
+UAA,Consumer Discretionary,Foxtrot
+UAL,Industrials,Golf
+UDR,Real Estate,Alpha
+UHS,Health Care,Golf
+UNH,Health Care,India
+UNM,Financials,Alpha
+UNP,Industrials,Golf
+UPS,Industrials,India
+URI,Industrials,November
+USB,Financials,Alpha
+UTX,Industrials,Golf
+V,Information Technology,Golf
+VAR,Health Care,Golf
+VMC,Materials,Alpha
+VNO,Real Estate,Golf
+VRSK,Industrials,Golf
+VRSN,Information Technology,Quebec
+VRTX,Health Care,Bravo
+VTR,Real Estate,Golf
+VZ,Telecommunication Services,Golf
+WBA,Consumer Staples,India
+WDC,Information Technology,Golf
+WEC,Utilities,Alpha
+WFC,Financials,Alpha
+WHR,Consumer Discretionary,Golf
+WM,Industrials,Golf
+WMB,Energy,Golf
+WMT,Consumer Staples,Hotel
+WRK,Materials,Alpha
+WU,Information Technology,Golf
+WY,Real Estate,Golf
+XEC,Energy,Golf
+XEL,Utilities,Alpha
+XRX,Information Technology,Golf
+XYL,Industrials,Golf
+ZION,Financials,Alpha
+ZTS,Health Care,Golf

@@ -78,6 +78,46 @@ See Figure~\ref{fig:appendix_backtest:sharpe_ratio} on Page~\pageref{fig:appendi
 \end{sidewaysfigure}
 
 
+\twocolumn
+\chapter{Optimal Learned Sector Universe} \label{appendix:optimal_ls}
+
+% Took forever to set up this table
+% See: http://www.ctex.org/documents/packages/table/supertabular.pdf
+% https://tex.stackexchange.com/questions/440078/how-can-i-generate-a-big-tabular-out-of-a-csv-file
+% https://tex.stackexchange.com/questions/88387/disable-two-column-mode-for-separate-part
+% https://tex.stackexchange.com/questions/269428/too-large-bottom-margin-with-xtab-or-supertabular
+% https://latex.org/forum/viewtopic.php?t=5825
+%
+% Basically, supertabular over-estimates the page margins and causes a huge bottom margin to appear. To
+% fix this the "\shrinkheight" command is run at each pagebreak (which is why its inserted into \tablehead)
+% Had to seat first page height manually because this package is a mess
+
+\begin{center}
+    \tablefirsthead{%
+        \setSTheight{8in}
+        \toprule
+        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{LS} \tabularnewline
+        \midrule
+    }
+    \tablehead{%
+        \toprule
+        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{LS} \tabularnewline
+        \midrule
+        \shrinkheight{-1.04in}
+    }
+    \tabletail{\midrule}
+    \tablelasttail{\bottomrule}
+    \begin{supertabular}{|c|c|c|}
+        \csvreader[
+            late after line=\\
+        ]{report_data/complete_17_table.csv}{1=\ticker, 2=\gics, 3=\ls}{\ticker & \gics & \ls}
+    \end{supertabular}
+\end{center}
+
+
+
+\onecolumn
+
 \chapter{Backtest Portfolio Weights} \label{appendix:portfolio_weights}
 
 \section*{Optimal Learned Sector Universe Portfolio}

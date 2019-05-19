@@ -1,0 +1,32 @@
+% This is a sample section file to demonstrate how these should be written
+
+% See Overleaf multi-file LaTeX project guide here: 
+% https://www.overleaf.com/learn/latex/Multi-file_LaTeX_projects
+
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    
+\twocolumn
+\chapter{This is a test}
+    
+
+\tablehead{%
+    t & t & t \\
+    \shrinkheight{-1in}
+}
+
+\tablefirsthead{%
+    test & test & test \\
+    \setSTheight{8in}
+}
+
+% Command to get height: setSTheight
+
+\begin{supertabular}{|c|c|c|}
+    \csvreader[
+        late after line=\\
+    ]{report_data/complete_17_table.csv}{1=\ticker, 2=\gics, 3=\ls}{\ticker & \gics & \ls}
+\end{supertabular}
+
+\end{document}
