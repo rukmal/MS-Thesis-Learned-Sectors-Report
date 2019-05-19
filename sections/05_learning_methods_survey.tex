@@ -54,7 +54,7 @@ The support vector classifier is based on the notion of finding a set of hyperpl
 
 As indicated by the literature, and through inspection of the objective function, it is clear that the support vector classifier is parameterized on the kernel used for optimization, as well as the specific loss function employed during model training. Furthermore, this model also optimizes to a fixed numbed of sectors, as opposed to a dynamic number. Therefore, this method too is inappropriate as per the evaluation critera.
 
-\subsection{Hierarchical Clustering}
+\subsection{Hierarchical Cluster Analysis} \label{learning_methods_survey:hca}
 
 Hierarchical clustering is a greedy algorithm which seeks to build clusters following either an agglomorative, or a divisive approach.\citeFormat{\cite{Ward1963HierarchicalFunction}} Aggolomorative clustering is \textit{bottom-up}, with each observation starting it its own cluster, whereas divisive is \textit{top-down}, with all observations starting in one cluster and splits performed recusrively at each level. The clusters output by this algorithm are determined by two model settings; the distance metric (i.e. the algorithm for computation of pairwise distance between observations), and the linkage method, which specifies the algorithm governing the dissimilarity of entire sets, as a function of the pairwise distances of observations in those sets.
 
