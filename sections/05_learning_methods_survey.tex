@@ -32,7 +32,7 @@ $K$-Means Clustering is a method of partitioning $n$-dimensional data into a set
     \text{Let $x_{ij}$} = \text{$j^\text{th}$ feature in cluster $i$ with coordinates $x$} \\
     \Rightarrow W(C_k) = \frac{1}{|C_k|} \sum_{i, i^\prime \in C_k} \sum_{j = 1}^p (x_{ij} - x_{i^\prime j})^2 \\
     \\
-    \therefore \text{$K$-Means Clusters}
+    \Rightarrow \text{$K$-Means Clusters}
     = \underset{C_1, \ldots, C_k}{\text{minimize}} \sum_{k=1}^K W(C_k)
     = \underset{C_1, \ldots, C_k}{\text{minimize}} \sum_{k=1}^K \frac{1}{|C_k|} \sum_{i, i^\prime \in C_k} \sum_{j = 1}^p (x_{ij} - x_{i^\prime j})^2
 \end{gather*}

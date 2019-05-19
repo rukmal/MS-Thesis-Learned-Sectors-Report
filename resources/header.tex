@@ -31,6 +31,17 @@
 % See: http://ftp.isu.edu.tw/pub/Unix/CTAN/macros/latex/contrib/caption/caption.pdf
 \captionsetup{labelfont=bf, textfont=it}
 
+% Blank page side
+%==============
+% When used, clears header on the blank page. Forces next thing to be on recto page
+% See: https://texfaq.org/FAQ-reallyblank
+% https://en.wikipedia.org/wiki/Recto_and_verso
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage
+  {\pagestyle{empty}\origdoublepage}%
+}
+
 % Section Numbering Setup
 %========================
 % Numbering depth

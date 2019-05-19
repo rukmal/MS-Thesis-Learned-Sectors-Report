@@ -78,11 +78,20 @@ See Figure~\ref{fig:appendix_backtest:sharpe_ratio} on Page~\pageref{fig:appendi
 \end{sidewaysfigure}
 
 
-\twocolumn
+
 
 \chapter{Optimal Learned Sector Universe} \label{appendix:optimal_ls}
 
-Put bar chart here
+\section{Optimal Learned Sector Asset Distribution}
+
+\begin{figure}[h]
+    \centering
+    \fbox{
+    \includegraphics[width=.9\linewidth]{images/ls_sector_distribution.png}
+    }
+    \caption{Distribution of companies ($n = 362$) across sectors in the risk-adjusted return optimal learned sector universe.}
+    \label{fig:appendix:optimal_ls:ls_sector_distribution}
+\end{figure}
 
 % Took forever to set up this table
 % See: http://www.ctex.org/documents/packages/table/supertabular.pdf
@@ -97,27 +106,26 @@ Put bar chart here
 % Remember to add "showframe" option to geometry package when investigating this; figured out that it was
 % messing up because the initial override I was setting was exceeding page margins
 
-\clearpage
-
+\twocolumn[\section{Optimal Learned Sector Universe Dataset}]
 
 \begin{center}
     \tablefirsthead{%
         \shrinkheight{-0.5in}
         \hline
-        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{Learned Sector} \tabularnewline
+        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{Optimal LS} \tabularnewline
         % \midrule
         \hline
     }
     \tablehead{%
-        \shrinkheight{-0.9in}
+        \shrinkheight{-1in}
         % \toprule
         \hline
-        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{Learned Sector} \tabularnewline
+        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{Optimal LS} \tabularnewline
         % \midrule
         \hline
     }
-    \tabletail{\midrule}
-    \tablelasttail{\bottomrule}
+    \tabletail{\hline}
+    \tablelasttail{\hline}
     \begin{supertabular}{|c|c|c|}
         \csvreader[
             late after line=\\

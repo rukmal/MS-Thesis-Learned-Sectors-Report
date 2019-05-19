@@ -28,9 +28,9 @@ The distance metric is the measure of the distance between pairs of observations
 
 \begin{gather*}
     \text{Let $\boldsymbol{p}, \boldsymbol{q}$} = \text{Cartesian coordinates $\boldsymbol{p} = (p_1, \ldots, p_n)$ and $\boldsymbol{q} = (q_1, \ldots, q_n)$ where $\{\boldsymbol{p}, \boldsymbol{q}\} \in \mathbb{R}^{n \times 2}$} \\
-    \text{Let $d(\boldsymbol{p},\boldsymbol{q})$} = \text{$\ell^2$ (i.e. Euclidean) distance between points $\boldsymbol{p}$ and $\boldsymbol{q}$} \\
+    \text{Let $dist(\boldsymbol{p},\boldsymbol{q})$} = \text{$\ell^2$ (i.e. Euclidean) distance between points $\boldsymbol{p}$ and $\boldsymbol{q}$} \\
     \\
-    \Rightarrow d(\boldsymbol{p}, \boldsymbol{q}) = d(\boldsymbol{q}, \boldsymbol{p})
+    \Rightarrow dist(\boldsymbol{p}, \boldsymbol{q}) = dist(\boldsymbol{q}, \boldsymbol{p})
     = \sqrt{(p_1 - q_1)^2 + (p_2 - q_2)^2 + \cdots + (p_n - q_n)^2}
     = \sqrt{\sum_{i=1}^n (p_i - q_i)^2}
 \end{gather*}
@@ -45,16 +45,16 @@ The second setting governing the behavior of the HCA algorithm is the selection 
     $$ \text{Let $N$} = |A| + |X| + |Y|, \; \text{where} \; |\alpha| = \text{Cardinality}(\alpha) $$
     
 \hspace{7em} \textbf{Single Linkage\citeFormat{\cite{Sibson1973SLINK:Method}}:}
-        $$ d(A, B) = \text{min} \; dist(a, b)  \; \forall \; \{ a, b : a \in A, b \in B \} $$
+        $$ d_\text{SLINK}(A, B) = \text{min} \; dist(\boldsymbol{a}, \boldsymbol{b})  \; \forall \; \{ \boldsymbol{a}, \boldsymbol{b} : \boldsymbol{a} \in A, \boldsymbol{b} \in B \} $$
     
 \hspace{7em} \textbf{Complete Linkage\citeFormat{\cite{Defays1977AnMethod}}:}
-        $$ d(A, B) = \text{max} \; dist(a, b)  \; \forall \; \{ a, b : a \in A, b \in B \} $$
+        $$ d_\text{CLINK}(A, B) = \text{max} \; dist(\boldsymbol{a}, \boldsymbol{b})  \; \forall \; \{ \boldsymbol{a}, \boldsymbol{b} : \boldsymbol{a} \in A, \boldsymbol{b} \in B \} $$
     
 \hspace{7em} \textbf{Average Linkage\citeFormat{\cite{Seifoddini1989SingleApplications}}:}
-        $$ d(A, B) = \frac{1}{|A| \cdot |B|} \sum_{a \in A} \sum_{b \in B} dist(a, b) $$
+        $$ d_\text{ALC}(A, B) = \frac{1}{|A| \cdot |B|} \sum_{\boldsymbol{a} \in A} \sum_{\boldsymbol{b} \in B} dist(\boldsymbol{a}, \boldsymbol{b}) $$
     
 \hspace{7em} \textbf{Ward (variance minimization) Linkage\citeFormat{\cite{Ward1963HierarchicalFunction}}:}
-        $$ d(C, A) = \sqrt{ \frac{|A| + |X|}{N} d(A, X)^2 + \frac{|A| + |Y|}{N} d(A, Y)^2 - \frac{|A|}{N} d(X, Y)^2 } $$
+        $$ d_\text{WARD}(C, A) = \sqrt{ \frac{|A| + |X|}{N} d_\text{WARD}(A, X)^2 + \frac{|A| + |Y|}{N} d_\text{WARD}(A, Y)^2 - \frac{|A|}{N} d_\text{WARD}(X, Y)^2 } $$
 
 \section{Unsupervised Learning Approach}
 
@@ -74,7 +74,7 @@ To work around the semi-supervised nature of the learning method, we elected to 
 
 Note that this search-space generation varies the sector count and linkage method parameters of the HCA model, but not the distance metric. This is due to the fact that we wish to preserve the monotonic and geometric difference of magnitudes of wealth implied by the dollar values of our input data.
 
-Figure~\ref{fig:hierarchical_clustering_model:tree} is a dendrogram of a sample HCA model generated on a subset of the model input data. Despite having a very high time complexity for model training, the HCA model thrives in its ability to extract sector classifications of varying arity from a HCA model. Its ability to perform this action in constant time complexity greatly enhanced our ability to generate a large search space of candidate learned sector universes.
+Figure~\ref{fig:hierarchical_clustering_model:sample_dendogram} is a dendrogram of a sample HCA model generated on a subset of the model input data. Despite having a very high time complexity for model training, the HCA model thrives in its ability to extract sector classifications of varying arity from a HCA model. Its ability to perform this action in constant time complexity greatly enhanced our ability to generate a large search space of candidate learned sector universes.
 
 
 \pagebreak
