@@ -4,6 +4,27 @@
 
 \chapter{Hierarchical Clustering Model} \label{hierarchical_clustering_model}
 
+% Quick overview of HCA again
+% Distance metric
+
+% Talk about maintaining "unsupervised" nature; build search space now evaluate next
+% Criteria being varied in search space; linkage [4], number of sectors [15; range from 5-19]
+% Visualize search space
+
+
+In the previous chapter, we evalauted major families of learning methods and identified the Hierarchical Clustering Analysis (hereafter \textit{HCA}) algorithm to be the method best aligned with the research goals of the project. Here we outline the specifics of our approach to applying HCA to our model input data, and build a search space of candidate universes to be evaluated, fully addressing RG-1.
+
+\section{HCA Overview}
+
+As outlined in Section~\ref{
+
+
+\section{Unsupervised Learning Approach}
+
+\section{Sector Universe Search Space}
+
+
+
 \begin{itemize}
     \item What are important variables in the model?
     \item How to visualize results from the model?
@@ -37,6 +58,10 @@ Hierarchical clustering is an algorithm that groups similar objects into groups 
 \section{Linkage Methods}
 
 The most important thing for this model is how to measure the distance between 2 clusters. There are several ways to calculate it and we call these ways linkage methods. We test 4 common linkage methods in our model. They are called "single", "average", "complete" and "ward". Below are detailed formulas.
+
+
+- Agglomorative
+- Euclidean
 
 For all points \textit{i} in cluster \textit{u} and \textit{j} in cluster \textit{v},
 \begin{itemize}

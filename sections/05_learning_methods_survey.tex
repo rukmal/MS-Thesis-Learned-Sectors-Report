@@ -1,0 +1,66 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+    
+\chapter{Learning Methods Survey} \label{learning_methods_survey}
+
+
+In this chapter, we ouline a set of ideal characteristics and desired behavior of an ideal candidate classification algorithm, and conduct a survey of potential unsupervised learning methods. We then evaluate each of these surveyed methods against our selection criteria, and determine the optimal method with which to proceed.
+
+\section{Evaluation Criteria}
+
+Despite being not entirely objective, existing classification heuristics have a range of desirable behavior that we would wish to replicate with our candidate clustering algorithm. Additionally, we would want to replicate this behavior while also maintining objectivity and stability in our new heuristic by utilizing a highly nonparametric learning method.
+
+In particular, we would be extremely interested in preserving the nested hierarchical clustering behavior of the current schemes. That is, to be able to classify a market into sectors, and in turn those sectors into subsectors. Furthermore, it would be desirable to be able to determine these nested sub-sectors in the context of the greater market, rather than in isolated analysis of a particular sector.
+
+Additionally, we would also like to vary the number of resulting sectors of our algorithm while maintaining stability. That is, if we were to request two sectors from a heuristic that was initially resulting in four sectors, the two sectors would be some combination of the initial four sectors, as opposed to an entirely new segmentation profile. This behavior is reflective of the real world, where economic sectors often exhibit nesting, as opposed to independent clustering.
+
+Finally, as per RG-1 (see Section~\ref{research_goals:specific_research_goals}), we are extremely motivated to design a heuristic that is either entirely non-parametric, or parameterized with highly objective, quantitatively derived criteria. In addition to preserving mathematical objectivity of our results, a nonparametric approach would ensure that no personal biases - either explicit or implicit - are introduced to the final learned sectors.
+
+
+\section{Candidate Learning Methods}
+
+Given the required behavior outlined above, we evaluated three major families of clustering algorithms. We emperically evaluate each clustering technique through the lens of the requirements outlined above.
+
+\subsection{$K$-means Clustering}
+
+$K$-Means Clustering is a method of partitioning $n$-dimensional data into a set of $K$ distinct clusters. The basic algorithm is outlined below\citeFormat{\cite{Lloyd1982LeastPCM}}:
+
+\begin{gather*}
+    \text{Let $C_1, C_2, \ldots, C_K$} = \text{Set of K possible clusters} \\
+    \text{Let $W(C_k)$} = \text{Measure of pariwise difference of observations in a cluster} \\
+    \text{Let $x_{ij}$} = \text{$j^\text{th}$ feature in cluster $i$ with coordinates $x$} \\
+    \Rightarrow W(C_k) = \frac{1}{|C_k|} \sum_{i, i^\prime \in C_k} \sum_{j = 1}^p (x_{ij} - x_{i^\prime j})^2 \\
+    \\
+    \therefore \text{$K$-Means Clusters}
+    = \underset{C_1, \ldots, C_k}{\text{minimize}} \sum_{k=1}^K W(C_k)
+    = \underset{C_1, \ldots, C_k}{\text{minimize}} \sum_{k=1}^K \frac{1}{|C_k|} \sum_{i, i^\prime \in C_k} \sum_{j = 1}^p (x_{ij} - x_{i^\prime j})^2
+\end{gather*}
+
+Notice that in the algorithm outlined above, the $K$-means clustering process requires two sets of parameters at initialization. First, it requires the number of target clusters, $K$, as well as a set of random initializations for cluster centroids, $\frac{1}{|C_k} \sum_{i \in C_k} x_{ij}$. This high level of parameterization, coupled with the clear lack of congruity of assignment across varying values of $K$ make this family of algorithms poorly suited to the task of sector classification, as per the constraints detailed above.
+
+\subsection{Support Vector Classifier}
+
+The support vector classifier is based on the notion of finding a set of hyperplanes in a higher dimensional feature space that optimally divides a set of data into classes. Data is mapped to a higher dimensional space to ensure orthogonal hyperplanes in the divisions of the clusters. The support vector classifier objective function is outlined below\citeFormat{\cite{Ben-Hur2001SupportClustering}}:
+
+\begin{equation*}
+    \begin{aligned}
+        & \underset{R, a, \boldsymbol{\alpha}}{\text{minimize}} & & R^2 - \sum_i \alpha_i (R^2 - ||x_i - a||^2) \\
+        & \text{subject to}
+        & & \alpha_i \geq 0 \\
+        & & & (R^2 - ||x_i - a||^2) = 0 \; \forall \; i \; \text{(KKT Condition)}
+    \end{aligned}
+\end{equation*}
+
+As indicated by the literature, and through inspection of the objective function, it is clear that the support vector classifier is parameterized on the kernel used for optimization, as well as the specific loss function employed during model training. Furthermore, this model also optimizes to a fixed numbed of sectors, as opposed to a dynamic number. Therefore, this method too is inappropriate as per the evaluation critera.
+
+\subsection{Hierarchical Clustering}
+
+Hierarchical clustering is a greedy algorithm which seeks to build clusters following either an agglomorative, or a divisive approach.\citeFormat{\cite{Ward1963HierarchicalFunction}} Aggolomorative clustering is \textit{bottom-up}, with each observation starting it its own cluster, whereas divisive is \textit{top-down}, with all observations starting in one cluster and splits performed recusrively at each level. The clusters output by this algorithm are determined by two model settings; the distance metric (i.e. the algorithm for computation of pairwise distance between observations), and the linkage method, which specifies the algorithm governing the dissimilarity of entire sets, as a function of the pairwise distances of observations in those sets.
+
+This method has the distinct advantage of being entirely additively hierarchical, with groups being nested as described in the evaluation criteria. Furthermore, this method is entirely nonparametric, with the sole exception being the choice of linkage and distance metric. Additionally, it is extremely stable with varying sector counts. This is a direct result of the greedy nature of the algorithm, as it does not recompute the hierarcy each time a new cluster arity is extracted, but rather just changes the level of extraction from the same hierarchy.
+
+As per the evaluation of the different families of learning methods detailed in this chapter, we selected Hierarcical Clustering to be the basis of our Learned Sectors classification heuristic.
+
+
+\end{document}

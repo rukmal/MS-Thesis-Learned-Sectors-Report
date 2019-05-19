@@ -79,7 +79,10 @@ See Figure~\ref{fig:appendix_backtest:sharpe_ratio} on Page~\pageref{fig:appendi
 
 
 \twocolumn
+
 \chapter{Optimal Learned Sector Universe} \label{appendix:optimal_ls}
+
+Put bar chart here
 
 % Took forever to set up this table
 % See: http://www.ctex.org/documents/packages/table/supertabular.pdf
@@ -91,19 +94,27 @@ See Figure~\ref{fig:appendix_backtest:sharpe_ratio} on Page~\pageref{fig:appendi
 % Basically, supertabular over-estimates the page margins and causes a huge bottom margin to appear. To
 % fix this the "\shrinkheight" command is run at each pagebreak (which is why its inserted into \tablehead)
 % Had to seat first page height manually because this package is a mess
+% Remember to add "showframe" option to geometry package when investigating this; figured out that it was
+% messing up because the initial override I was setting was exceeding page margins
+
+\clearpage
+
 
 \begin{center}
     \tablefirsthead{%
-        \setSTheight{8in}
-        \toprule
-        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{LS} \tabularnewline
-        \midrule
+        \shrinkheight{-0.5in}
+        \hline
+        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{Learned Sector} \tabularnewline
+        % \midrule
+        \hline
     }
     \tablehead{%
-        \toprule
-        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{LS} \tabularnewline
-        \midrule
-        \shrinkheight{-1.04in}
+        \shrinkheight{-0.9in}
+        % \toprule
+        \hline
+        \textbf{Ticker} & \textbf{GICS Sector} & \textbf{Learned Sector} \tabularnewline
+        % \midrule
+        \hline
     }
     \tabletail{\midrule}
     \tablelasttail{\bottomrule}
