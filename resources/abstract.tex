@@ -7,136 +7,14 @@
 
 Market sectors play a key role in the efficient flow of capital through the modern Global economy. Their use is widespread across the entire spectrum of market participants and observers, ranging from Governments using them to better regulate industry, to retail investors gaining exposure to particular segments of the economy through exchange traded funds tracking sector indices. We analyze existing sectorization heuristics, and observe that the most popular - the GICS (which informs the S\&P 500), and the NAICS (published by the U.S. Government) are not entirely quantitatively driven, but rather appear to be highly subjective and rooted in dogma.
 
-We examined alternative approaches to market sectorization, and found that returns-based methods were inherently flawed due to the significant bias of existing classifications on the structure of correlation distributions of the returns. Following this, we inspected determinants of firm value that would be intrinsically descriptive of the economic operating domain of a company. Building on inferences from analysis of the capital structure irrelavance principle and the Modigliani-Miller theoretic universe conditions, we postulate that corporation fundamentals - particularly those components specific to the Modigliani-Miller universe conditions - would be optimal descriptors of the true economic domain of operation of a company. Fundamentals data from Form 10-K for 15 features were downloaded for 362 companies in the S\&P 500, forming the feature space on which train our classification model.
+We examined alternative approaches to market sectorization, and found that returns-based methods were inherently flawed due to the significant bias of existing classifications on the structure of correlation distributions of the returns. Following this, we inspected determinants of firm value that would be intrinsically descriptive of the economic operating domain of a company. Building on inferences from analysis of the capital structure irrelevance principle and the Modigliani-Miller theoretic universe conditions, we postulate that corporation fundamentals - particularly those components specific to the Modigliani-Miller universe conditions - would be optimal descriptors of the true economic domain of operation of a company. Fundamentals data from Form 10-K for 15 features were downloaded for 362 companies in the S\&P 500, forming the feature space on which train our classification model.
 
 To this end, we developed a new, objective data-driven sector classification heuristic, based on a HCA algorithm. We utilized this novel heuristic to generate a set of potential candidate learned sector universes, by varying the linkage method of the HCA algorithm (testing SLINK, CLINK, ALC, and WARD linkage methods), and the number of resulting sectors derived from the model (ranging from 5 to 19), resulting in a total of 60 candidate learned sector universes.
 
-We then introduce \textit{reIndexer}, a backtest-driven sector universe evaluation research tool, to rank the candidate sector universes produced by our learned sector classification heuristic. \textit{reIndexer} backtests portfolios of synthetic exchange traded funds, constructed based on the specifications of a candidate sector universe. The backtest period was from January $1^\text{st}$ 2012 to December $31^\text{st}$ 2017, tracking the evolution of the portfolio daily. The backtest results of each classification universe are then evaluated against each other, to derive a de-facto \textit{rank} for the candidate sector universes. This rank was utilized to identify the risk-adjusted return optimal learned sector universe as being the universe generated under CLINK (i.e. complete) linkage, with 17 sectors.
+We then introduce \textit{reIndexer}, a backtest-driven sector universe evaluation research tool, to rank the candidate sector universes produced by our learned sector classification heuristic. \textit{reIndexer} backtests portfolios of synthetic exchange traded funds, constructed based on the specifications of a candidate sector universe. The backtest period was from January $1^\text{st}$ 2012 to December $31^\text{st}$ 2017, tracking the evolution of the portfolio daily. The backtest results of each classification universe are then evaluated against each other, to derive a de facto \textit{rank} for the candidate sector universes. This rank was utilized to identify the risk-adjusted return optimal learned sector universe as being the universe generated under CLINK (i.e. complete) linkage, with 17 sectors.
 
 Finally, we evaluate our risk-adjusted return optimal learned sector against the benchmark classification heuristic, the GICS S\&P 500 Classification. \textit{reIndexer} was used again to backtest the GICS classification universe against the optimal (complete linkage; 17 sectors) learned sector universe. We found that our learned sector universe portfolio outperformed the benchmark with respect to both absolute portfolio value, and the risk-adjusted return of the portfolio over the backtest period.
 
 We conclude that we fully explored the scope of our thesis statement, and addressed our specific research goals through the successful development of a fundamentals-driven Learned Sector classification heuristic with a superior risk-diversification profile than the status quo classification heuristic.
-
-
-% Abstract goes here.
-
-% This is temporary, but look back to this as a reference while writing the report. In the first class lecture, the instructures laid out the grading scheme and a rough grading rubric for the report:
-
-% \begin{table}[h!]
-%     \centering
-%     \begin{tabular}{|c|c|}
-%         \hline
-%         \textbf{Section} & \textbf{Points} \\
-%         \hline
-%         Abstract & 5 \\
-%         Introduction & 10 \\
-%         Literature Review & 5 \\
-%         Methodology & 15 \\
-%         Results & 15 \\
-%         Conclusion & 5 \\
-%         Bibliography & 5 \\
-%         \hline
-%     \end{tabular}
-%     \caption{Grading rubric.}
-%     \label{tab:abstract:grading_rubric}
-% \end{table}
-
-% Following this rubric, I think we should split our project into the following sections
-
-% \begin{enumerate}
-%     \item Abstract (DO THIS LAST)
-
-%     \item Introduction
-%     \begin{itemize}
-%         \item What are sectors? High level introduction
-%         \item Why should I care? Explain this with applications (Credit Risk Modeling, ETFs, Peer Valuation, etc.)
-%         \item What is the status quo? Review of current methodology; GICS + FTSE in particular
-%         \item Why is it broken? Discuss the "company choice" criteria of the current sectorization schemes; explain why this is stupid (potentially cite others that also have the same criteria)
-%     \end{itemize}
-    
-%     \item Research Goals
-%     \begin{itemize}
-%         \item Segue into this from previous section by saying something like "To this end, we developed the research goal..."
-%         \item List main thesis (green box from presentation)
-%         \item List specific research goals (from presentation); have small section/paragraph describing each
-%         \item \textbf{IMPORTANT} number all of these like RQ1, RQ2, etc. to refer back to them later
-%         \item End by saying we will explore each of the research goals in detail in the following sections of the report
-%     \end{itemize}
-
-%     \item Literature Review
-%     \begin{itemize}
-%         \item Need to do this
-%     \end{itemize}
-    
-%     \item Feature Selection
-%     \begin{itemize}
-%         \item Talk about WRDS here
-%         \item Talk about the fields we're using; come up with a way to justify why (basically need to communicate that accounting reports are indicative of underlying business structure; maybe refer to capital budgeting)
-%         \item Benchmark Data (need to mention limitation that we only have cross-sectional data for SPY sectors)
-%     \end{itemize}
-    
-%     \item Unsupervised Learning Method Survey
-%     \begin{itemize}
-%         \item Discuss potential unsupervised learning methods; discuss K-Means, SVM, etc.
-%         \item Discuss benefits of HCA, especially flexibility in creating different numbers of sectors easily (this should be motivated by the introduction, where you talk about how the existing number of sectors is completely arbitrary)
-%     \end{itemize}
-    
-%     \item Hierarchical Clustering Model
-
-%     \begin{itemize}
-%         \item HCA description (high level)
-%         \item Distance measure (might be part of previous section; we're using default euclidian distance)
-%         \item Linkage method discussion (need to mention that we can't pick the "best" one outright without introducing bias)
-%         \item Number of sectors - why we didn't pick a single number (same reason as testing all linkage methods)
-%         \item Candidate sector universe visualization
-%         \item talk about ranking these sectors (this might be in the next section intro instead)
-%     \end{itemize}
-
-%     \item Candidate Universe Ranking
-%     \begin{itemize}
-%         \item Use example candidate universe to explain "universe by universe" comparison
-%         \item reIndexer
-%         \begin{itemize}
-%             \item Overview
-%             \item Software architecture
-%             \item synthetic ETF construction
-%             \item minimum variance portfolio computation
-%         \end{itemize}
-%         \item Target performance metrics (need to describe \textit{why} we choose each of these in depth) (need to talk about rolling window for this computation, etc.)
-%         \begin{itemize}
-%             \item Restructuring Turnover (metric for measuring cost for institution constructing the ETFs)
-%             \item Rebalancing Turnover (metric for measuring cost for retail investor holding the ETFs)
-%             \item Sharpe Ratio (relate this back to the expected economic diversification benefit from naturally divergent businesses)
-%             \item Portfolio Return
-%         \end{itemize}
-%         \item Backtest configuration (start date, stop date, etc.)
-%     \end{itemize}
-    
-%     \item Optimal Sector Universes
-%     \begin{itemize}
-%         \item Visualize backtest results (crazy graphs; probably in appendix)
-%         \item List optimal universes under each performance metric (min restructuring + rebalancing cost, max portfolio return, max sharpe ratio)
-%         \item Sharpe Ratio optimal sector description and analysis
-%     \end{itemize}
-    
-%     \item Benchmark Comparison
-%     \begin{itemize}
-%         \item Compare each of the performance metrics
-%         \item Write analysis for this basically
-%     \end{itemize}
-    
-    
-%     \item Conclusion (Restate thesis, research goals, show that we addressed all of them)
-
-%     \item Future Work (deep-ish dive into 2/3 possible avenues)
-%     \begin{itemize}
-%         \item Tune hierarchical clustering to control for lopsided disritibution of assets in the clusters
-%         \item Explore different synthetic ETF construction heuristics (specifically, market cap weighted)
-%         \item Dynamically adjusting sector assignments in the backtest (currently using a single cross-sectional sector assignment) (NOTE: maybe mention we did this earlier; didn't consider it because we didn't have the data for the benchmark)
-%         \item Rank existing sector classification schemes
-%         \item Other future work (maybe; basically a laundry list of "nice-to-have", not really well thought out suggestions)
-%     \end{itemize}
-    
-% \end{enumerate}
 
 \end{document}

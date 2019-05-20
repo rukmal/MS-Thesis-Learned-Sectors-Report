@@ -5,7 +5,7 @@
 \chapter{Optimal Sector Universes} \label{optimal_sector_universes}
 
 
-In this chapter, we utilize the backtesting system outlined in the previous chapter, we performed historical universe-level analysis of each of our candidate learned sectors. To reiterate, we plan to use the SETF restructuring turnover, the portfolio rebalancing turnover, the portfolio value, and the Sharpe ratio to rank our candidate learned sectors againt each other.
+In this chapter, we utilize the backtesting system outlined in the previous chapter, we performed historical universe-level analysis of each of our candidate learned sectors. To reiterate, we plan to use the SETF restructuring turnover, the portfolio rebalancing turnover, the portfolio value, and the Sharpe ratio to rank our candidate learned sectors against each other.
 
 Due to the magnitude of data output by the reIndexer backtesting system, all calculations in this section were performed in the cloud, on Google Research Colaboratory.\citeFormat{\cite{GoogleResearch2019GoogleColaboratory}} Data was loaded dynamically from its output location on Google Drive, directly into Google Colaboratory. Following this, individual output files were opened sequentially to extract the necessary longitudinal data dimension for the candidate learned sector universe, with all data being kept in-memory on Google Cloud Platform servers for increased efficiency during analysis.\citeFormat{\cite{Weerawarana2019LearnedAnalytics}}
 
@@ -30,9 +30,9 @@ See Appendix~\ref{appendix:backtest_visualization} on Page~\pageref{appendix:bac
 
 We computed and recorded each of the Performance Evaluation Metrics outlined in Section~\ref{candidate_universe_ranking:eval_metrics} for each time step across all 60 candidate learned sector universes.
 
-Following this, we computationally extract the optimally performing learned sector universe for each of the performance metrics. As both turnover metrics track a cost, we isolated the learned sector universe with the minimum cumulative value at the end of the simulation. Conversely, we isolated the learned sector universe that yielded the maximimum value for both the portfolio value, and the (average) rolling Sharpe ratio.
+Following this, we computationally extract the optimally performing learned sector universe for each of the performance metrics. As both turnover metrics track a cost, we isolated the learned sector universe with the minimum cumulative value at the end of the simulation. Conversely, we isolated the learned sector universe that yielded the maximum value for both the portfolio value, and the (average) rolling Sharpe ratio.
 
-We now discuss the optimally peforming learned sector universe with respect to the turnover and maximum absolute portfolio value metrics. Coincidentally, the minimum cumulative SETF restructuring turnover, and the minimum portfolio rebalancing turnover are both achieved by the same learned sector universe. These two performance metrics will be discussed together.
+We now discuss the optimally performing learned sector universe with respect to the turnover and maximum absolute portfolio value metrics. Coincidentally, the minimum cumulative SETF restructuring turnover, and the minimum portfolio rebalancing turnover are both achieved by the same learned sector universe. These two performance metrics will be discussed together.
 
 \subsection{Minimum Cumulative Turnover}
 
@@ -97,9 +97,9 @@ Unlike the previous performance metric, evaluating the historical learned sector
 
 The absolute portfolio value tracks the value of the portfolio throughout the backtesting period, utilizing the nested value computation outlined in Section~\ref{candidate_universe_ranking:port_optim}. While not being a direct proxy of risk diversification, if viewed through the lens of potentially improved economic asset grouping, this learned sector universe is extremely encouraging. If the corollary that better capital market performance is correlated with improved economic sector performance, this result would imply that the fundamentals-driven classification heuristic does indeed provide a beneficial measure of diversification.
 
-Unlike the previous learned sector universe under the Single Linkage Method, the learned sector outlined in Figure~\ref{fig:optimal_sector_universe:max_return} appears to have significantly less pooling. Despite this however, assets are still highly concentrared in a single extremely large sector, with other sector sizes (with respect to the number of constitutent companies) being significantly smaller.
+Unlike the previous learned sector universe under the Single Linkage Method, the learned sector outlined in Figure~\ref{fig:optimal_sector_universe:max_return} appears to have significantly less pooling. Despite this however, assets are still highly concentrated in a single extremely large sector, with other sector sizes (with respect to the number of constituent companies) being significantly smaller.
 
-An interesting observation of this sector is that there is significant dispersion from the original benchmark classification. Omitting the sector \textit{Alpha} due to its gargantuan size, sectors \textit{Charlie} and \textit{Delta} both have numerous components from highly diverse original benchmark sectors. Sector \textit{Charlie} appears to have a high number of assets from the \textit{Health Care} sector, as well as the \textit{Industrials} and \textit{Consumer Discretionary} sectors. Similarly, sector \textit{Delta} has a large number of constiutent assets classified as \textit{Information Technology}, \textit{Consumer Staples}, and \textit{Consumer Discretionary} under the benchmark classification.
+An interesting observation of this sector is that there is significant dispersion from the original benchmark classification. Omitting the sector \textit{Alpha} due to its gargantuan size, sectors \textit{Charlie} and \textit{Delta} both have numerous components from highly diverse original benchmark sectors. Sector \textit{Charlie} appears to have a high number of assets from the \textit{Health Care} sector, as well as the \textit{Industrials} and \textit{Consumer Discretionary} sectors. Similarly, sector \textit{Delta} has a large number of constituent assets classified as \textit{Information Technology}, \textit{Consumer Staples}, and \textit{Consumer Discretionary} under the benchmark classification.
 
 As with the sample sector classification discussed in Section~\ref{candidate_universe_ranking:sample_ls}, there appears to be high levels of dispersion of assets in sectors which are increasingly requisite to doing business. This is particularly evident (again, ignoring sector \textit{Alpha}) through the dispersion of the \textit{Information Technology}, \textit{Health Care}, and \textit{Consumer Discretionary} sectors.
 
@@ -120,9 +120,13 @@ Finally, to isolate the sector with the maximum rolling annualized Sharpe ratio,
 
 The Sankey diagram corresponding to the risk-adjusted return optimal learned sector is displayed in Figure~\ref{fig:optimal_sector_universe:max_sharpe}. As indicated by the diagram, this learned sector universe has even less pooling behavior that both of the previously discussed learned sector universes (Figure~\ref{fig:optimal_sector_universe:minimum_turnover} and Figure~\ref{fig:optimal_sector_universe:max_return}), despite still having 2 relatively large sectors, \textit{Alpha}, and \textit{Golf}, when compared to the rest.
 
-As this learned sector universe provides the best risk-adjusted return on an already variance-minimized Global Minimum Variance Portfolio comparison, it would imply that this configuration provides the best risk diversification profile out of all of the candidate learned sector universes. In addition to the obviously highly prevalent dispersion from the benchmark classification to the new learned sectors, the size of each of the sectors is also consierably more even compared to its peers. This would imply a better portfolio-level diversification profile, as poorly performing sectors can be underweight during times of low implied risk-adjusted return. This is a key caveat of the pooling behavior particularly prevelant under the Single Linkage heuristic.
+As this learned sector universe provides the best risk-adjusted return on an already variance-minimized Global Minimum Variance Portfolio comparison, it would imply that this configuration provides the best risk diversification profile out of all of the candidate learned sector universes. In addition to the obviously highly prevalent dispersion from the benchmark classification to the new learned sectors, the size of each of the sectors is also considerably more even compared to its peers. This would imply a better portfolio-level diversification profile, as poorly performing sectors can be underweight during times of low implied risk-adjusted return. This is a key caveat of the pooling behavior particularly prevalent under the Single Linkage heuristic.
 
 This lack of transitivity, combined with the implication that a higher risk-adjusted return implies a better risk-diversification profile would suggest that the learned sector universe heuristic is providing high levels of economic diversification, which appears to be at odds with the benchmark classification.
+
+The full dataset of the risk-adjusted return optimal learned sector universe is reproduced in Appendix~\ref{appendix:optimal_ls}.
+
+\pagebreak
 
 \begin{figure}
     \centering

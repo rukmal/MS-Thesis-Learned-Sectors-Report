@@ -5,11 +5,11 @@
 \chapter{Learning Methods Survey} \label{learning_methods_survey}
 
 
-In this chapter, we ouline a set of ideal characteristics and desired behavior of an ideal candidate classification algorithm, and conduct a survey of potential unsupervised learning methods. We then evaluate each of these surveyed methods against our selection criteria, and determine the optimal method with which to proceed.
+In this chapter, we outline a set of ideal characteristics and desired behavior of an ideal candidate classification algorithm, and conduct a survey of potential unsupervised learning methods. We then evaluate each of these surveyed methods against our selection criteria, and determine the optimal method with which to proceed.
 
 \section{Evaluation Criteria}
 
-Despite being not entirely objective, existing classification heuristics have a range of desirable behavior that we would wish to replicate with our candidate clustering algorithm. Additionally, we would want to replicate this behavior while also maintining objectivity and stability in our new heuristic by utilizing a highly nonparametric learning method.
+Despite being not entirely objective, existing classification heuristics have a range of desirable behavior that we would wish to replicate with our candidate clustering algorithm. Additionally, we would want to replicate this behavior while also maintaining objectivity and stability in our new heuristic by utilizing a highly nonparametric learning method.
 
 In particular, we would be extremely interested in preserving the nested hierarchical clustering behavior of the current schemes. That is, to be able to classify a market into sectors, and in turn those sectors into subsectors. Furthermore, it would be desirable to be able to determine these nested sub-sectors in the context of the greater market, rather than in isolated analysis of a particular sector.
 
@@ -20,7 +20,8 @@ Finally, as per RG-1 (see Section~\ref{research_goals:specific_research_goals}),
 
 \section{Candidate Learning Methods}
 
-Given the required behavior outlined above, we evaluated three major families of clustering algorithms. We emperically evaluate each clustering technique through the lens of the requirements outlined above.
+Given the required behavior outlined above, we evaluated three major families of clustering algorithms. We empirically evaluate each clustering technique through the lens of the requirements outlined above.
+
 
 \subsection{$K$-means Clustering}
 
@@ -52,15 +53,15 @@ The support vector classifier is based on the notion of finding a set of hyperpl
     \end{aligned}
 \end{equation*}
 
-As indicated by the literature, and through inspection of the objective function, it is clear that the support vector classifier is parameterized on the kernel used for optimization, as well as the specific loss function employed during model training. Furthermore, this model also optimizes to a fixed numbed of sectors, as opposed to a dynamic number. Therefore, this method too is inappropriate as per the evaluation critera.
+As indicated by the literature, and through inspection of the objective function, it is clear that the support vector classifier is parameterized on the kernel used for optimization, as well as the specific loss function employed during model training. Furthermore, this model also optimizes to a fixed numbed of sectors, as opposed to a dynamic number. Therefore, this method too is inappropriate as per the evaluation criteria.
 
 \subsection{Hierarchical Cluster Analysis} \label{learning_methods_survey:hca}
 
-Hierarchical clustering is a greedy algorithm which seeks to build clusters following either an agglomorative, or a divisive approach.\citeFormat{\cite{Ward1963HierarchicalFunction}} Aggolomorative clustering is \textit{bottom-up}, with each observation starting it its own cluster, whereas divisive is \textit{top-down}, with all observations starting in one cluster and splits performed recusrively at each level. The clusters output by this algorithm are determined by two model settings; the distance metric (i.e. the algorithm for computation of pairwise distance between observations), and the linkage method, which specifies the algorithm governing the dissimilarity of entire sets, as a function of the pairwise distances of observations in those sets.
+Hierarchical clustering is a greedy algorithm which seeks to build clusters following either an agglomerative, or a divisive approach.\citeFormat{\cite{Ward1963HierarchicalFunction}} Agglomerative clustering is \textit{bottom-up}, with each observation starting it its own cluster, whereas divisive is \textit{top-down}, with all observations starting in one cluster and splits performed recursively at each level. The clusters output by this algorithm are determined by two model settings; the distance metric (i.e. the algorithm for computation of pairwise distance between observations), and the linkage method, which specifies the algorithm governing the dissimilarity of entire sets, as a function of the pairwise distances of observations in those sets.
 
-This method has the distinct advantage of being entirely additively hierarchical, with groups being nested as described in the evaluation criteria. Furthermore, this method is entirely nonparametric, with the sole exception being the choice of linkage and distance metric. Additionally, it is extremely stable with varying sector counts. This is a direct result of the greedy nature of the algorithm, as it does not recompute the hierarcy each time a new cluster arity is extracted, but rather just changes the level of extraction from the same hierarchy.
+This method has the distinct advantage of being entirely additively hierarchical, with groups being nested as described in the evaluation criteria. Furthermore, this method is entirely nonparametric, with the sole exception being the choice of linkage and distance metric. Additionally, it is extremely stable with varying sector counts. This is a direct result of the greedy nature of the algorithm, as it does not recompute the hierarchy each time a new cluster arity is extracted, but rather just changes the level of extraction from the same hierarchy.
 
-As per the evaluation of the different families of learning methods detailed in this chapter, we selected Hierarcical Clustering to be the basis of our Learned Sectors classification heuristic.
+As per the evaluation of the different families of learning methods detailed in this chapter, we selected Hierarchical Clustering to be the basis of our Learned Sectors classification heuristic.
 
 
 \end{document}

@@ -35,7 +35,7 @@ Figure~\ref{fig:candidate_universe_ranking:sample_ls_universe} is a Sankey Diagr
 
 As evidenced by the diagram, there appears to be significant transitory behavior of corporations across sectors when comparing the benchmark sectors to the learned sectors. Additionally, there also appears to be a large amount of mixing between the sectors, with very few sectors appearing to be preserved between the sector universes. This implies a stark lack of congruity between the benchmark classification and the learned sector universe heuristic. In the example, the only sector that can be considered remotely similar to a benchmark sector would be learned sector \textit{Alpha} to benchmark sector \textit{Financials}.
 
-Other sectors however, appear largely broken up and dispersed when comparing their benchmark sector to the new learned sector univese. Particularly noticable examples of this include the benchmark sectors \textit{Health Care}, \textit{Information Technology}, and \textit{Consumer Discretionary}. Due to the fundamentals-driven nature of our classification heuristic, this result is not entirely surprising; the benchmark sectors that appear to have the most dispersion in the learned sector universe are ones which are increasingly integral to regular business, regardless of sector; particularly \textit{Information Technology}.
+Other sectors however, appear largely broken up and dispersed when comparing their benchmark sector to the new learned sector universe. Particularly noticeable examples of this include the benchmark sectors \textit{Health Care}, \textit{Information Technology}, and \textit{Consumer Discretionary}. Due to the fundamentals-driven nature of our classification heuristic, this result is not entirely surprising; the benchmark sectors that appear to have the most dispersion in the learned sector universe are ones which are increasingly integral to regular business, regardless of sector; particularly \textit{Information Technology}.
 
 As illustrated in this section with a single example, there is extremely little congruity between the benchmark sector classification and the learned sector classification. This pattern can be observed across a larger set of learned sector universes in Figure~\ref{fig:hierarchical_clustering_model:partial_search_space}, a partial visualization of the learned sector search space.
 
@@ -57,7 +57,7 @@ To combat this issue, we decided to evaluate the sector universes as a whole, an
 
 \textit{reIndexer}\citeFormat{\cite{Weerawarana2019ReIndexerUniverses}} is an open-source research tool for backtest-driven evaluation of different sector universes, using a system of Synthetic ETFs (hereafter \textit{SETF}), and efficient portfolios of those SETFs. reIndexer was designed and implemented to solve the problem discussed in the previous section; namely, the fact that we cannot perform a sector-by-sector comparison, and thus must compare learned sectors at the universe-level.
 
-Built on Quantopian's \textit{Zipline Pythonic Algorithmic Trading Library}\citeFormat{\cite{QuantopianInc.2019ZiplineLibrary}}, reIndexer is fully API-compatible with Quantopian's suite of analytics tools, including \textit{Alphalens}\citeFormat{\cite{QuantopianInc.2019AlphalensFactors}} and \textit{Pyfolio}\citeFormat{\cite{QuantopianInc.2019PyfolioPython}}. While these libraries are not directly used in this project, the modular design of reIndexer make it an extremely powerful platform that is highly extensible in scope and functionality.
+Built on Quantopian's \textit{Zipline Pythonic Algorithmic Trading Library}\citeFormat{\cite{QuantopianInc.2019ZiplineLibrary}}, reIndexer is fully API-compatible with the Quantopian suite of analytics tools, including \textit{Alphalens}\citeFormat{\cite{QuantopianInc.2019AlphalensFactors}} and \textit{Pyfolio}\citeFormat{\cite{QuantopianInc.2019PyfolioPython}}. While these libraries are not directly used in this project, the modular design of reIndexer make it an extremely powerful platform that is highly extensible in scope and functionality.
 
 reIndexer was designed under the the hypothesis that the universe-level statistics of a given sectorization scheme would provide a superior metric for comparison across sector universes, compared to a sector-by-sector analysis. To this end - at a very high level - it provides a level of abstraction between single-asset trades, and constructed SETFs (whose composition is provided by the user), to simulate and record the performance of a portfolio of these SETFs over a predefined backtesting window.
 
@@ -68,6 +68,8 @@ As the assets prescribed by the classification heuristic are not traded in the r
 To this end, reIndexer currently implements a price-weighted synthetic ETF. The pythonic implementation of this ETF is based on a highly flexible and reproducible tempalte, ensuring that different types of ETFs (market-weighted, etc.) can be easily implemented and used with reIndexer. For this project, price-weighted SETFs were used due to the fact that Zipline does not have historical market capitalization data for certain firms in its asset universe.
 
 The mathematical formulation of the price-weighted SETF is outlined below:
+
+\pagebreak
 
 \begin{gather*}
     \text{Let $\boldsymbol{S}_\alpha$} = \text{Assets in sample sector $\alpha$} \\
@@ -98,11 +100,13 @@ reIndexer provides an extremely flexible interface to specify SETF restructuring
 
 Following the construction of the SETFs, reIndexer builds an efficient portfolio, treating each of the SETFs as distinct, unitary assets. As our goal with the project is to assess the benefit of fundamentals-driven objective sector classifications through the lens of risk diversification, reIndexer currently implements a backtest of a Global Minimum Variance Portfolio, not allowing short-sales.
 
-However, in a similar fashion to the price-weighted SETF, the pythonic implementation of this portfolio is highly generalized in the reIndexer source code, and can be easily reconfigurable to work with myriad different portfolio configuraitons. reIndexer provides functionality to retreive a Matrix of historical SETF prices for a given lookback window, with SETF prices being correctly computed using the formulation described above.
+However, in a similar fashion to the price-weighted SETF, the pythonic implementation of this portfolio is highly generalized in the reIndexer source code, and can be easily reconfigurable to work with myriad different portfolio configurations. reIndexer provides functionality to retrieve a Matrix of historical SETF prices for a given lookback window, with SETF prices being correctly computed using the formulation described above.
 
 Following this, reIndexer computes the correlation matrix of returns using the historical prices over a specific lookback period, and then performs the non-convex optimization necessary to compute SETF weights in the Global Minimum Variance Portfolio. A sequential quadratic programming solver from the Python library \textit{SciPy}\citeFormat{\cite{Oliphant2007PythonComputing}} was used to perform the optimization.
 
 The mathematical formulation for this process is outlined below (note that notation is preserved from the preceding section):
+
+\pagebreak
 
 \begin{gather*}
     \text{Let $\Omega$} = \text{Set of sectors in the candidate universe, $\Omega_i \in \{\Omega_1, \Omega_2, \ldots, \Omega_n\}$} \\
@@ -153,7 +157,7 @@ Similar to the SETF restructuring process, the portfolio rebalanacing process to
     =& \sum_{i \in \boldsymbol{\Omega}} \sum_{j \in \boldsymbol{S}_i} w_{j, \tau} \cdot P_{j, \tau} \cdot \omega_{i, \tau}
 \end{align*}
 
-In addition to the portfolio value, other metrics are also recorded at each timestep. These include open positions, the sharpe ratio, the information ratio, and myriad other portfolio statistics. In this project, we do not utilize the full battery of statistics provied by Zipline (over 30 individual statistics in total), but we maintain the capability to generate these statistics for future expansion of reIndexer, and to maintain API compatibility with the Quantopian suite of analysis tools.
+In addition to the portfolio value, other metrics are also recorded at each timestep. These include open positions, the Sharpe ratio, the information ratio, and myriad other portfolio statistics. In this project, we do not utilize the full battery of statistics provided by Zipline (over 30 individual statistics in total), but we maintain the capability to generate these statistics for future expansion of reIndexer, and to maintain API compatibility with the Quantopian suite of analysis tools.
 
 \pagebreak
 
@@ -166,13 +170,13 @@ In this section, we describe the software architecture of reIndexer. Figure~\ref
     \fbox{
     \includegraphics[width=.8\linewidth]{images/reindexer_architecture.png}
     }
-    \caption{reIndexer architecture overview diagram}
+    \caption{reIndexer architecture overview diagram.}
     \label{fig:candidate_universe_ranking:reindexer_architecture}
 \end{figure}
 
 As seen in the diagram, SETFs are constructed from the bare asset statistics on the left, and are treated as unitary assets. Upon computation of SETF historical price chains (outlined above), the Global Minimum Variance Portfolio (with no short-sales) is computed by solving the non-convex optimization, also outlined above.
 
-Both of the intervals of comptuation for these distinct determinants of portfolio value, the asset weights in the SETF, and the SETF weights in the portfolio, are computed at discrete, user-configurable intervals and do not necessarily have to occur at the same time. This behavior allows to replicate the real market to a high degree of accuracy, as most popular ETFs are rebalanced on the third Friday of every month, whereas retail investor portfolios are typically rebalanced on the first trading day of each month. Furthermore, Zipline also maintains the full historical order book for each asset, thus providing realistic price drift effects when large orders are placed.
+Both of the intervals of computation for these distinct determinants of portfolio value, the asset weights in the SETF, and the SETF weights in the portfolio, are computed at discrete, user-configurable intervals and do not necessarily have to occur at the same time. This behavior allows to replicate the real market to a high degree of accuracy, as most popular ETFs are rebalanced on the third Friday of every month, whereas retail investor portfolios are typically rebalanced on the first trading day of each month. Furthermore, Zipline also maintains the full historical order book for each asset, thus providing realistic price drift effects when large orders are placed.
 
 After both computations are performed, individual trades are passed to the Zipline layer of the system (highlighted in red). These trades are only executed on the days of either SETF restructuring (i.e. $\boldsymbol{w}$ update) or portfolio rebalancing (i.e. $\boldsymbol{\omega}$ update). This provides us with a significant performance boost, as Zipline is optimized to record historical portfolio performance extremely quickly when trade execution is not required.
 
@@ -198,7 +202,7 @@ To fully address RG-2 (see Section~\ref{research_goals:specific_research_goals})
 
 As described above, a SETF event is the recomputation of constituent asset weights in a synthetic ETF, and is a user-configurable triggered event. In the financial markets today, sector ETFs are typically created and sold by financial institutions. This abundance of ETFs provides increased liquidity to the market, while also reducing the barrier for entry to retail investors to gain exposure to specific sectors.
 
-A key cost of creating and holding these ETFs for financial instutions is the fee incurred during ETF restructuring. Due to their enhanced status in the market, large financial institutions do not pay traditional commission fees charged to retail investors when executing trades on a stock exchange.
+A key cost of creating and holding these ETFs for financial institutions is the fee incurred during ETF restructuring. Due to their enhanced status in the market, large financial institutions do not pay traditional commission fees charged to retail investors when executing trades on a stock exchange.
 
 However, we believe it is valid to assume that their cost of trading would be proportional to the asset turnover of the component assets at each of these restructuring times. Therefore, we chose to record the component SETF asset restructuring turnover at each time a restructure is triggered, and utilize it as a proxy for judging the cost to financial institutions that would be incentivized to create ETFs of these sectors if they were indeed real. The mathematical formulation of this turnover for a single restructuring event is outlined below:
 
@@ -217,7 +221,7 @@ Similar to how we treat the SETF restructuring turnover as a proxy for the cost 
 To avoid introducing specific cost bias to our evaluation, we simply record the turnover of each SETF at each portfolio rebalance event. The mathematical formulation of this turnover for a single rebalancing event is outlined below:
 
 \begin{gather*}
-    \text{Let $\tau_t$ and $\tau_{t+1}$} = \text{Times portoflio rebalancing events are triggered} \\
+    \text{Let $\tau_t$ and $\tau_{t+1}$} = \text{Times portfolio rebalancing events are triggered} \\
     \text{Let $\boldsymbol{\omega}_t$} = \text{Vector of SETF weights in the portfolio at time $t$} \\
     \text{Let $\boldsymbol{\pi}_t$} = \text{Vector of prices of SETFs in the portfolio at time $t$} \\
     \\
@@ -234,7 +238,7 @@ We also record the overall portfolio return over time. The computation of portfo
 
 To best evaluate our initial hypothesis that our learned sector classification heuristic - based on objective fundamentals data - would provide better economically diversified sector classifications, we must test the diversification benefit of our learned sector universes, relative to the benchmark. Similarly, we also utilize this metric to isolate the optimal learned sector universe portfolio with respect to this diversification benefit metric.
 
-As we are already computing the global minimum variance portfolio with no short sales, the total variance of the portfolio is minimized. Due to this fact, we can treat the risk-adjusted return (i.e. the Sharpe Ratio) as a metric for quantifying the diversification benefit of each learned sector classficiation universe with respect to a single unit of risk. The mathematical formulation of risk-adjusted return captured by reIndexer is reproduced below (parameterized by the annualized portfolio return, $R_p$ and the portfolio variance $\sigma_p$):
+As we are already computing the global minimum variance portfolio with no short sales, the total variance of the portfolio is minimized. Due to this fact, we can treat the risk-adjusted return (i.e. the Sharpe Ratio) as a metric for quantifying the diversification benefit of each learned sector classification universe with respect to a single unit of risk. The mathematical formulation of risk-adjusted return captured by reIndexer is reproduced below (parameterized by the annualized portfolio return, $R_p$ and the portfolio variance $\sigma_p$):
 
 \begin{gather*}
     \text{Sharpe Ratio} = \frac{R_p - r_f}{\sigma_p}

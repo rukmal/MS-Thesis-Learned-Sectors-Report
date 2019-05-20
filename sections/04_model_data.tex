@@ -21,7 +21,7 @@ In this section, we describe the data sources used in our project, and identify 
 
 In the previous section (see page~\pageref{literature_review:economic_sectors_fundamentals}), we explored the effect of the violation of the Modigliani-Miller theoretic universe conditions on the capital structure irrelevance principle, in conjunction with observations of the dynamics of the determinants of capital structure in transitional and established economies. The logical corollary of this analysis is that fundamentals data reflective of capital structure - particularly those specific to the Modigliani-Miller universe conditions - are optimal descriptors of the economic domain of a company.
 
-Based on this conclusion, we idenfied earnings data from Form 10-K\citeFormat{\cite{U.S.SecuritiesandExchangeCommission2019Form10-K}} filings to be our model input data. This data was retrieved for 362 companies in the S\&P 500 Index, for every year from 2010 to 2017, from the Compustat Database\citeFormat{\cite{SPGlobalMarketIntelligence2019CompustatIntelligence}}, via the Wharton Research Data Services\citeFormat{\cite{TheWhartonSchool1993WhartonServices}} Cloud (hereafter \textit{WRDS}).
+Based on this conclusion, we identified earnings data from Form 10-K\citeFormat{\cite{U.S.SecuritiesandExchangeCommission2019Form10-K}} filings to be our model input data. This data was retrieved for 362 companies in the S\&P 500 Index, for every year from 2010 to 2017, from the Compustat Database\citeFormat{\cite{SPGlobalMarketIntelligence2019CompustatIntelligence}}, via the Wharton Research Data Services\citeFormat{\cite{TheWhartonSchool1993WhartonServices}} Cloud (hereafter \textit{WRDS}).
 
 \section{Feature Selection}
 
@@ -61,7 +61,7 @@ Given the variability of earnings reports, we identified 15 specific features fr
 
 To evaluate our final learned sector universe and fully address RG-3, we identified the GICS S\&P 500 Classification\citeFormat{\cite{MSCI-MorganStanleyCapitalInternational2019GICSMSCI}} (hereafter \textit{benchmark universe}) to be our benchmark. Unfortunately, the complete dataset of sector assignments our benchmark universe is proprietary. Due to this, we were unable to collate historical sector assignments, and were limited to the latest sector assignments for companies in our input data space.
 
-Due to the disparity in temporal alignment between our data, we decided to utilize only the latest available data for our learned sector universe evlautions. That is - unless stated otherwise - we only utilized learned sector assignments implied by the 2017 10-K Form data for the remainder of this project.
+Due to the disparity in temporal alignment between our data, we decided to utilize only the latest available data for our learned sector universe evolutions. That is - unless stated otherwise - we only utilized learned sector assignments implied by the 2017 10-K Form data for the remainder of this project.
 
 The distribution of the 362 companies in our input data across various sectors in the benchmark universe is displayed in Figure~\ref{fig:model_data:sp500_sector_distribution}.
 
