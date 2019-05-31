@@ -4,6 +4,12 @@ Final project report for FE 800 (Special Research Problems) to fulfill graduatio
 
 Completed in May 2019.
 
+## Abstract
+
+```
+
+```
+
 
 ## Style Guide
 
