@@ -6,9 +6,17 @@ Completed in May 2019.
 
 ## Abstract
 
-```
-
-```
+> Market sectors play a key role in the efficient flow of capital through the modern Global economy. Their use is widespread across the entire spectrum of market participants and observers, ranging from Governments using them to better regulate industry, to retail investors gaining exposure to particular segments of the economy through exchange traded funds tracking sector indices. We analyze existing sectorization heuristics, and observe that the most popular - the GICS (which informs the S&P 500), and the NAICS (published by the U.S. Government) - are not entirely quantitatively driven, but rather appear to be highly subjective and rooted in dogma.
+>
+> We examined alternative approaches to market sectorization, and found that returns-based methods were inherently flawed due to the significant bias of existing classifications on the structure of correlation distributions of the returns. Following this, we inspected determinants of firm value that would be intrinsically descriptive of the economic operating domain of a company. Building on inferences from analysis of the capital structure irrelevance principle and the Modigliani-Miller theoretic universe conditions, we postulate that corporation fundamentals - particularly those components specific to the Modigliani-Miller universe conditions - would be optimal descriptors of the true economic domain of operation of a company. Fundamentals data from Form 10-K for 15 features were downloaded for 362 companies in the S&P 500, forming the feature space on which train our classification model.
+>
+> To this end, we developed a new, objective data-driven sector classification heuristic, based on a HCA algorithm. We utilized this novel heuristic to generate a set of potential candidate learned sector universes, by varying the linkage method of the HCA algorithm (testing SLINK, CLINK, ALC, and WARD linkage methods), and the number of resulting sectors derived from the model (ranging from 5 to 19), resulting in a total of 60 candidate learned sector universes.
+>
+> We then introduce *reIndexer*, a backtest-driven sector universe evaluation research tool, to rank the candidate sector universes produced by our learned sector classification heuristic. *reIndexer* backtests portfolios of synthetic exchange traded funds, constructed based on the specifications of a candidate sector universe. The backtest period was from January 1st 2012 to December 31st 2017, tracking the evolution of the portfolio daily. The backtest results of each classification universe are then evaluated against each other, to derive a de facto *rank* for the candidate sector universes. This rank was utilized to identify the risk-adjusted return optimal learned sector universe as being the universe generated under CLINK (i.e. complete linkage), with 17 sectors.
+>
+> Finally, we evaluate our risk-adjusted return optimal learned sector against the benchmark classification heuristic, the GICS S&P 500 Classification. *reIndexer* was used again to backtest the GICS classification universe against the optimal (complete linkage; 17 sectors) learned sector universe. We found that our learned sector universe portfolio outperformed the benchmark with respect to both absolute portfolio value, and the risk-adjusted return of the portfolio over the backtest period.
+>
+> We conclude that we fully explored the scope of our thesis statement, and addressed our specific research goals through the successful development of a fundamentals-driven Learned Sector classification heuristic with a superior risk-diversification profile than the status quo classification heuristic.
 
 
 ## Style Guide
